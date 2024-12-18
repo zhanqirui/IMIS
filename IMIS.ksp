@@ -1,0 +1,16 @@
+{
+	"appName":"IMIS",
+	"appCode":"IMIS",
+	"serverUrl":"http://127.0.0.1:54801",
+	"appInfo":{
+		"id":"ce4b589f55544ce689c91b77400dfda1",
+		"layout":"1",
+		"security":"http",
+		"selectModule":"kesplus_workflow"
+	},
+	"supportVersion":{
+		"createVersion":"v3.1.6",
+		"maxVersion":"v3.1.6",
+		"minVersion":"v3.1.6"
+	}
+}
