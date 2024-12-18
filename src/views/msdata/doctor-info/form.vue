@@ -1,5 +1,4 @@
 
-
 <template>
   <KDialogForm :read-pretty="readPretty">
     <el-form ref="formRef" :model="form" label-width="auto">
@@ -9,6 +8,12 @@
             <KCol>
 
                       
+              <KCell>
+                <el-form-item label="科室ID" prop="departmentId" :rules="[]" data-grid-span="1">
+                  <el-input v-model="form.departmentId" placeholder="请输入科室ID" clearable/>
+                </el-form-item>
+              </KCell>
+            
               <KCell>
                 <el-form-item label="姓名" prop="name" :rules="[]" data-grid-span="1">
                   <el-input v-model="form.name" placeholder="请输入姓名" clearable/>
@@ -36,12 +41,6 @@
               <KCell>
                 <el-form-item label="联系电话" prop="phone" :rules="[]" data-grid-span="1">
                   <el-input v-model="form.phone" placeholder="请输入联系电话" clearable/>
-                </el-form-item>
-              </KCell>
-            
-              <KCell>
-                <el-form-item label="紧急联系人" prop="emergencyContact" :rules="[]" data-grid-span="1">
-                  <el-input v-model="form.emergencyContact" placeholder="请输入紧急联系人" clearable/>
                 </el-form-item>
               </KCell>
                       
@@ -73,12 +72,12 @@ const { form, reset, submit, closeDialog } = useDialogForm({
   id: toRef(props, "id"),
   formRef,
   default: {
+    departmentId: "",
     name: "",
     gender: "",
     age: "",
     idNumber: "",
     phone: "",
-    emergencyContact: "",
     ...props.row
   },
   fetchById: id => {
