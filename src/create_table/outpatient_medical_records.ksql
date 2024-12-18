@@ -1,0 +1,11 @@
+create table "MSDATA"."$(outpatient_medical_records)"(
+    medical_record_id INT PRIMARY KEY,
+    patient_id INT NOT NULL,
+    doctor_id INT NOT NULL,
+    diagnosis_category VARCHAR(255) NOT NULL,
+    visit_date DATE NOT NULL,
+    department_id INT NOT NULL,
+    self_reported_past_medical_history VARCHAR(255),
+    patient_condition VARCHAR(255)
+)
+ 
