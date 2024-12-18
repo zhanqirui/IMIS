@@ -18,4 +18,5 @@ components.d.ts
 auto-imports.d.ts
 .config
 .kesplus.local.js
-  
+IMIS.ksp
+public/server.json
