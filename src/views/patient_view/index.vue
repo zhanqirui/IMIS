@@ -1,6 +1,10 @@
+.page-margin {
+  margin: px;
+}
+
 <template>
-  <div v-access="'view_patient_page'">
-    <!-- 整个页面的内容都在这个 div 下面，只有具有 'view_new_page' 权限的用户才能看到 -->
+  <div>
+    <!-- 整个页面的内容都在这个 div 下面 -->
 
     <KPage>
       
@@ -68,21 +72,20 @@
     </KPage>
   
     <KCell></KCell>
-        </div>
+  </div>
 </template>
+
 <script setup>
 import { reactive } from 'vue'
 const form = reactive({})
 
-
-
 const form_1 = reactive({})
 
-import { request, access } from '@kesplus/kesplus'
+import { request } from '@kesplus/kesplus'
 import { ref, toRef } from "vue";
 import { useSelect, useDialogForm } from "@@/plugin-platform/utils/hooks";
 const formRef = ref();
-const { form:vwfrForm, reset:vwfrReset, submit:vwfrSubmit, closeDialog: vwfrCloseDialog } = useDialogForm({
+const { form: vwfrForm, reset: vwfrReset, submit: vwfrSubmit, closeDialog: vwfrCloseDialog } = useDialogForm({
   // 待编辑数据的id
   id: ref(),
   // 表单模型的Ref, 用于表单校验
@@ -90,7 +93,7 @@ const { form:vwfrForm, reset:vwfrReset, submit:vwfrSubmit, closeDialog: vwfrClos
   // 表单默认值
   default: {},
   fetchById: (id) => {
-    return request.get('/kes/IMIS/MSDATA/getPatientPastHistory',{ params: { id } });
+    return request.get('/kes/IMIS/MSDATA/getPatientPastHistory', { params: { id } });
   },
   save: async (model) => {
     if (model.id) {

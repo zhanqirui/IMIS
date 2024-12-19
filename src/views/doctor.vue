@@ -1,56 +1,41 @@
+.page-margin {
+  margin: px;
+}
+
 <template>
   <KPage>
     
-  <KSection><KRow>
-  <KCell><el-image src="/pictures/zqr.png" style="width: 100px; height: 50px;" /></KCell>
+  <KSection>
+<KCell>
+          
+<el-image src="/pictures/yetou.png" class="page-margin"/>
+      <el-tabs type="border-card">
+        <el-tab-pane label="User"><KRow>
   <KCell>
-    <el-form ref="formRef" label-width="auto" :model="form">
+  <KCol>
+    <KCell><el-image src="/pictures/zqr.png" /></KCell>
+    <KCell>
+      <KText style="text-align: center; font-family: 'DengXian', sans-serif;;font-size: 20px;">医生画像</KText>
+            </KCell>
+    
+  </KCol>
+      </KCell>
+  <KCell>
+    <el-form ref="formRef" label-width="auto" :model="form" class="page-margin">
       <KRow>
         
-      <el-card header="您的个人信息" style="width: 1200px; height: 400px;">
+      <el-card header="您的个人信息" style="font-size: 24px;width: 1600px; height: 400px;">
         
             
   
       
 
     
-<KRow>
-  
-  
-  
-<KText>姓名</KText></KRow><KText>性别</KText><KRow>
-  
-  
-  
-<KRow>
-  
-  
-  
-<KText>年龄</KText></KRow></KRow><KRow>
-  <KCell>
+
         
-            <KText>科室</KText></KCell>
-  
-  
-</KRow><KRow>
-  
-  
-  
-<KText>联系电话</KText></KRow><KRow>
-  <KCell>
-        
-            <KText>紧急联系人</KText></KCell>
-  
-  
-</KRow>
+      
     
-<KRow>
-  <KCell>
-        
-            <KText>身份证号</KText></KCell>
-  
-  
-</KRow>
+
     
 
     </el-card>
@@ -60,55 +45,30 @@
   </KCell>
   
 
-              </KRow>
-
-    </KSection><KSection>
-        
-<KBlock><KCell>
-    <el-form ref="formRef" label-width="auto" :model="form">
-      <KRow>
-        <KCell>
+              </KRow></el-tab-pane>
       
-   
-<KRow>
-  
-  
-  <KCell>
-      <el-tooltip
-        class="box-item"
-        effect="dark"
-        content="Top Left prompts info"
-        placement="top-start"
-      >
-        
-      </el-tooltip></KCell>
-</KRow>
-    </KCell>
-      </KRow>
-    </el-form>
-  </KCell>
-              <KRow>
-                <KCell>
-      
-      
+<el-tab-pane label="标签项1">
   <KCol>
     <KCell>
-      
-      <el-tabs type="border-card">
-        <el-tab-pane label="病人一览"></el-tab-pane>
-      
-<el-tab-pane label="病历一览"></el-tab-pane>
+        <KTableBar />
+      </KCell>
+    <KCell></KCell>
+    <KCell></KCell>
+  </KCol>
+      </el-tab-pane>
 
-
+<el-tab-pane label="标签项2">
+  <KCol>
+    <KCell></KCell>
+    <KCell></KCell>
+    <KCell></KCell>
+  </KCol>
+      </el-tab-pane>
 </el-tabs>
-    
     </KCell>
     
-    
-  </KCol>
-      </KCell>
-                
-              </KRow></KBlock></KSection></KPage>
+
+    </KSection></KPage>
 </template>
 <script setup>
 import { reactive } from 'vue'

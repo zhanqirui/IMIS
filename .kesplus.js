@@ -9,12 +9,12 @@ const buildConfig = {
   },
   title: "kesplus",
   router: {
-    routes : [
-      {
-        path: "/", 
-        redirect: '/patient',
-      }
-    ],
+    // routes : [
+    //   {
+    //     path: "/", 
+    //     redirect: '/patient',
+    //   }
+    // ],
     mode: "history",
   },
   access: {

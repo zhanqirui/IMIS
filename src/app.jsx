@@ -1,4 +1,5 @@
 import { defineRuntimeConfig} from "@kesplus/kesplus";
+// import { createRouter, createWebHistory } from 'vue-router'; // 导入 
 // import './icons/icons'
 // const initialState = useModel("@@initialState");
 // 在此处匹配，如果getrole返回的字符串包含admin则把一个变量赋值成1， 包含patient则把一个变量赋值成2， 包含doctor则把变量赋值成3，包含researcher则把变量赋值成4
@@ -16,6 +17,14 @@ import { defineRuntimeConfig} from "@kesplus/kesplus";
 //     roleValue = 4;
 // }
 
+
+
 export default defineRuntimeConfig({});
 
-export function onAppCreated({ app }) {}
+export function onAppCreated({ app }) {
+  // const router = createRouter({
+  //   history: createWebHistory(),
+  //   routes: routes,
+  // });
+  // app.use(router);
+}
