@@ -2,7 +2,7 @@
   <div
     class="login-container relative h-full w-full flex flex-justify-center flex-items-center bg-center-top bg-no-repeat dark:bg-#101628"
   ><el-card
-      class="z-1 w-100 <sm:w-83 !rounded-4% !border-none !bg-transparent"
+      class="z-1 w-100 <sm:w-83 !rounded-4% !border-none  bg-color"
     >
       <h3
         class="mt-6 flex-x-center text-24px text-primary font-500"
