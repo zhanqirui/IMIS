@@ -1,14 +1,13 @@
 <template>
   <KPage>
     
-  <KSection>
-<KRow>
-  <KCell><el-image src="/pictures/zqr.png" /></KCell>
+  <KSection><KRow>
+  <KCell><el-image src="/pictures/zqr.png" style="width: 100px; height: 50px;" /></KCell>
   <KCell>
     <el-form ref="formRef" label-width="auto" :model="form">
       <KRow>
         
-      <el-card header="您的个人信息" style="width: 900px; height: 400px;">
+      <el-card header="您的个人信息" style="width: 1200px; height: 400px;">
         
             
   
@@ -30,7 +29,7 @@
 <KText>年龄</KText></KRow></KRow><KRow>
   <KCell>
         
-            <KText>身份证号</KText></KCell>
+            <KText>科室</KText></KCell>
   
   
 </KRow><KRow>
@@ -47,17 +46,13 @@
     
 <KRow>
   <KCell>
-        <KText>就诊次数</KText>
-            </KCell>
+        
+            <KText>身份证号</KText></KCell>
   
   
 </KRow>
     
-<KRow>
-  
-  
-  
-</KRow>
+
     </el-card>
         
       </KRow>
@@ -66,6 +61,7 @@
   
 
               </KRow>
+
     </KSection><KSection>
         
 <KBlock><KCell>
@@ -77,12 +73,42 @@
 <KRow>
   
   
-  <KCell></KCell>
+  <KCell>
+      <el-tooltip
+        class="box-item"
+        effect="dark"
+        content="Top Left prompts info"
+        placement="top-start"
+      >
+        
+      </el-tooltip></KCell>
 </KRow>
     </KCell>
       </KRow>
     </el-form>
-  </KCell></KBlock></KSection></KPage>
+  </KCell>
+              <KRow>
+                <KCell>
+      
+      
+  <KCol>
+    <KCell>
+      
+      <el-tabs type="border-card">
+        <el-tab-pane label="病人一览"></el-tab-pane>
+      
+<el-tab-pane label="病历一览"></el-tab-pane>
+
+
+</el-tabs>
+    
+    </KCell>
+    
+    
+  </KCol>
+      </KCell>
+                
+              </KRow></KBlock></KSection></KPage>
 </template>
 <script setup>
 import { reactive } from 'vue'
