@@ -66,7 +66,9 @@
         </KBlock>
       </KSection>
     </KPage>
-  </div>
+  
+    <KCell></KCell>
+        </div>
 </template>
 <script setup>
 import { reactive } from 'vue'
