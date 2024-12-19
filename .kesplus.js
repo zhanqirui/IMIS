@@ -9,6 +9,9 @@ const buildConfig = {
   },
   title: "kesplus",
   router: {
+    // routes : [{path: "/patient", component: ()=>import("@/views/patient.vue"), name: 'patient'},
+    //            {path: "/zhenzhi", component: ()=>import("@/views/zhenzhi.vue"),  name: 'zhenzhi'}
+    // ],
     mode: "history",
   },
   access: {

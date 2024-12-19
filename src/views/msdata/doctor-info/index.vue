@@ -86,7 +86,7 @@
             </KTable>
           </template>
         </KTableBar>
-      </KQueryTable>
+      </KQueryTable><el-button  :round="true" @click="navigateTo"  type="primary">提交</el-button> 
     </KQueryList>
   </template>
 
@@ -213,4 +213,10 @@
   ];
   // #endregion
 
-  </script>
+  
+import { useRouter, useRoute } from "@@/core/coreExports";
+const router = useRouter();
+function navigateTo() {
+  router.push({ path: "/patient_view/patient" });
+}
+</script>

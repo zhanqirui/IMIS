@@ -13,7 +13,7 @@
         <el-form-item label="身份证号">
           <el-input v-model="queryForm.idNumber" placeholder="请输入" clearable />
         </el-form-item> 
-      </KQueryForm>
+       <el-button><el-text>确认</el-text></el-button> </KQueryForm>
       
       <KQueryTable>
         <KTableBar title="病患信息" :columns="columns" @refresh="fetchData">
