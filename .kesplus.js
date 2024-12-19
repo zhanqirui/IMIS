@@ -1,3 +1,4 @@
+import Patient from "@/views/patient.vue";
 import { defineBuildConfig } from "@kesplus/kesplus";
 /**
  * 定义KES Plus 配置
@@ -9,14 +10,16 @@ const buildConfig = {
   },
   title: "kesplus",
   router: {
-    // routes : [{path: "/patient", component: ()=>import("@/views/patient.vue"), name: 'patient'},
-    //            {path: "/zhenzhi", component: ()=>import("@/views/zhenzhi.vue"),  name: 'zhenzhi'}
+    // routes : [
+    //   {
+    //     path: "/", redirect: '/patient'
+    //   }
     // ],
     mode: "history",
   },
   access: {
     roles: {
-      admin: ["*"],
+      admin: ["*"]
     },
   },
 };
