@@ -2,55 +2,87 @@
   <KPage>
     
   <KSection>
-<KPage>
-  <KSection>
-    <KBlock>
-      <KCell>
+<KRow>
+  <KCell><el-image src="/pictures/zqr.png" /></KCell>
+  <KCell>
+    <el-form ref="formRef" label-width="auto" :model="form">
+      <KRow>
+        
+      <el-card header="您的个人信息" style="width: 900px; height: 400px;">
+        
+            
+  
+      
+
+    
+<KRow>
+  
+  
+  
+<KText>姓名</KText></KRow><KText>性别</KText><KRow>
+  
+  
+  
+<KRow>
+  
+  
+  
+<KText>年龄</KText></KRow></KRow><KRow>
+  <KCell>
+        
+            <KText>身份证号</KText></KCell>
+  
+  
+</KRow><KRow>
+  
+  
+  
+<KText>联系电话</KText></KRow><KRow>
+  <KCell>
+        
+            <KText>紧急联系人</KText></KCell>
+  
+  
+</KRow>
+    
+<KRow>
+  <KCell>
+        <KText>就诊次数</KText>
+            </KCell>
+  
+  
+</KRow>
+    
+<KRow>
+  
+  
+  
+</KRow>
+    </el-card>
+        
+      </KRow>
+    </el-form>
+  </KCell>
+  
+
+              </KRow>
+    </KSection><KSection>
+        
+<KBlock><KCell>
     <el-form ref="formRef" label-width="auto" :model="form">
       <KRow>
         <KCell>
-<KRow>
-  <KCell>
+      
+   
 <KRow>
   
   
-  
-
-<KRow>
-  <KCell>
-<KRow>
-  <KCell>
-      <el-form-item label="表单项">
-        <el-input  />
-      </el-form-item>
-   </KCell>
   <KCell></KCell>
-  
-</KRow>
-    </KCell>
-  
-  <KCell>
-<KRow>
-  <KCell></KCell>
-  <KCell></KCell>
-  <KCell></KCell>
-</KRow>
-    </KCell>
-</KRow>
-    </KRow>
-    </KCell>
-  
-  
 </KRow>
     </KCell>
       </KRow>
     </el-form>
-  </KCell>
-    </KBlock>
-  </KSection>
-
-              </KPage>
-</KSection></KPage>
+  </KCell></KBlock></KSection></KPage>
 </template>
 <script setup>
 import { reactive } from 'vue'
@@ -83,4 +115,10 @@ const { form:vwfrForm, reset:vwfrReset, submit:vwfrSubmit, closeDialog: vwfrClos
     vwfrCloseDialog?.()
   },
 });
+
+const form_1_1 = reactive({})
+
+const form_1_1_1 = reactive({})
+
+const form_1_1_1_1 = reactive({})
 </script>
