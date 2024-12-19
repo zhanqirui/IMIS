@@ -7,44 +7,26 @@
     
   <KSection>
 <KCell>
-          
+<!-- 主页面信息-病人画像 -->
 <el-image src="/pictures/yetou.png" class="page-margin"/>
       <el-tabs type="border-card">
         <el-tab-pane label="病人画像"><KRow>
-  <KCell>
-  
-      </KCell>
-  <KCell>
-    <el-form ref="formRef" label-width="auto" :model="form" class="page-margin">
-      
-    </el-form>
-  </KCell>
-  
 
-              </KRow>
+              <KCol>
+                <KCell><el-image          fit="none"   src="/pictures/zqr.png" style="width: 300px; height: 400px;" /></KCell>
+                <KCell><KCell><KText style="text-align: center; font-family: 'DengXian', sans-serif;;font-size: 20px;">病人图片</KText></KCell></KCell>
+              </KCol><KCell><el-card header="您的个人信息" style="font-size: 24px;width:800px; height: 500px;">
+</el-card></KCell>
+<KCell><el-calendar /></KCell>
+</KRow>
   <KCol>
-    
               <KRow>
                 
               <KCol>
-                <KCell><el-image src="/pictures/zqr.png" /></KCell>
-                <KCell><KText style="text-align: center; font-family: 'DengXian', sans-serif;;font-size: 20px;">病人图片</KText></KCell>
+                
+                <KCell></KCell>
               </KCol>
-                <KCell><el-card header="您的个人信息" style="font-size: 24px;width: 1600px; height: 400px;">
-        
-            
-  
-      
-
-    
-
-        
-      
-    
-
-    
-
-    </el-card></KCell>
+                <KCell></KCell>
               </KRow>
     <KCell></KCell>
     
@@ -54,17 +36,36 @@
 <el-tab-pane label="过往病历">
     
   <KCol>
-    <KCell><el-timeline-item timestamp="2023-10-1">
+    <KCell>
+  <KCol>
+    
+              <KRow>
+                <KCell>
+    <el-timeline>
+        <el-timeline-item timestamp="2023-10-1">
             <el-text>内容</el-text>
-            
-        </el-timeline-item><el-timeline-item timestamp="2023-10-1">
-            <el-text>内容</el-text>
-            
-        </el-timeline-item></KCell>
+        </el-timeline-item>
+    </el-timeline>
+    </KCell><KCell> <el-image  fit="none" src="/logo.svg" /></KCell>
+                
+              </KRow>
+    
+    
+  </KCol>
+      </KCell>
     <KCell>
         <KTableBar />
       </KCell>
-    <KCell></KCell>
+    <KCell>
+    <el-carousel style="width:100%;" :autoplay="false">
+      <el-carousel-item >
+        
+      <el-empty /></el-carousel-item>
+      <el-carousel-item >
+        <el-empty />
+      </el-carousel-item>
+    </el-carousel>
+        </KCell>
   </KCol>
       <el-timeline>
         
