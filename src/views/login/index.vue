@@ -1,9 +1,7 @@
 <template>
   <div
     class="login-container relative h-full w-full flex flex-justify-center flex-items-center bg-center-top bg-no-repeat dark:bg-#101628"
-  >
-    <Top />
-    <el-card
+  ><el-card
       class="z-1 w-100 <sm:w-83 !rounded-4% !border-none !bg-transparent"
     >
       <h3
@@ -11,7 +9,9 @@
         type="primary"
       >
         {{ $t("login.login") }}
-      </h3>
+      
+        
+    </h3>
       <el-form
         ref="formRef"
         :model="baseForm"
@@ -78,6 +78,8 @@
         </el-form-item>
       </el-form>
     </el-card>
+    <Top />
+    
     <Bottom />
   
         
