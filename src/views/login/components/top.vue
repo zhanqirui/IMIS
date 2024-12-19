@@ -1,13 +1,13 @@
 <template>
   <img
-  src="C:\Users\24941\IMIS\pictures\R-C.jpg"
+  src="\pictures\R-C.jpg"
   class="max-h- 24px"
   width="2000" height="1000"
   style="position: absolute; top: 0px; left: 0px;"
   alt="Your Image Description"
      />
      <img
-  src="C:\Users\24941\IMIS\pictures\logi.png"
+  src="\pictures\logi.png"
   class="max-h- 24px"
   width="50" height="50"
   style="position: absolute; top: 20px; left: 30px;"
