@@ -1,88 +1,84 @@
+.page-margin {
+  margin: px;
+}
+
 <template>
   <KPage>
     
   <KSection>
-<KRow>
-  <KCell><el-image src="/pictures/zqr.png" /></KCell>
+<KCell>
+          
+<el-image src="/pictures/yetou.png" class="page-margin"/>
+      <el-tabs type="border-card">
+        <el-tab-pane label="病人画像"><KRow>
   <KCell>
-    <el-form ref="formRef" label-width="auto" :model="form">
-      <KRow>
-        
-      <el-card header="您的个人信息" style="width: 900px; height: 400px;">
+  
+      </KCell>
+  <KCell>
+    <el-form ref="formRef" label-width="auto" :model="form" class="page-margin">
+      
+    </el-form>
+  </KCell>
+  
+
+              </KRow>
+  <KCol>
+    
+              <KRow>
+                
+              <KCol>
+                <KCell><el-image src="/pictures/zqr.png" /></KCell>
+                <KCell><KText style="text-align: center; font-family: 'DengXian', sans-serif;;font-size: 20px;">病人图片</KText></KCell>
+              </KCol>
+                <KCell><el-card header="您的个人信息" style="font-size: 24px;width: 1600px; height: 400px;">
         
             
   
       
 
     
-<KRow>
-  
-  
-  
-<KText>姓名</KText></KRow><KText>性别</KText><KRow>
-  
-  
-  
-<KRow>
-  
-  
-  
-<KText>年龄</KText></KRow></KRow><KRow>
-  <KCell>
-        
-            <KText>身份证号</KText></KCell>
-  
-  
-</KRow><KRow>
-  
-  
-  
-<KText>联系电话</KText></KRow><KRow>
-  <KCell>
-        
-            <KText>紧急联系人</KText></KCell>
-  
-  
-</KRow>
-    
-<KRow>
-  <KCell>
-        <KText>就诊次数</KText>
-            </KCell>
-  
-  
-</KRow>
-    
-<KRow>
-  
-  
-  
-</KRow>
-    </el-card>
-        
-      </KRow>
-    </el-form>
-  </KCell>
-  
 
-              </KRow>
-    </KSection><KSection>
         
-<KBlock><KCell>
-    <el-form ref="formRef" label-width="auto" :model="form">
-      <KRow>
-        <KCell>
       
-   
-<KRow>
-  
-  
-  <KCell></KCell>
-</KRow>
+    
+
+    
+
+    </el-card></KCell>
+              </KRow>
+    <KCell></KCell>
+    
+  </KCol>
+      </el-tab-pane>
+      
+<el-tab-pane label="过往病历">
+    
+  <KCol>
+    <KCell><el-timeline-item timestamp="2023-10-1">
+            <el-text>内容</el-text>
+            
+        </el-timeline-item><el-timeline-item timestamp="2023-10-1">
+            <el-text>内容</el-text>
+            
+        </el-timeline-item></KCell>
+    <KCell>
+        <KTableBar />
+      </KCell>
+    <KCell></KCell>
+  </KCol>
+      <el-timeline>
+        
+
+        
+    </el-timeline>
+    </el-tab-pane>
+</el-tabs>
+    
+        
     </KCell>
-      </KRow>
-    </el-form>
-  </KCell></KBlock></KSection></KPage>
+    
+
+    </KSection></KPage>
 </template>
 <script setup>
 import { reactive } from 'vue'
