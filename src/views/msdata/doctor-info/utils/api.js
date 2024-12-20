@@ -37,7 +37,7 @@ export const detailApi = (params) => {
 }
 
 //通过视图获得医生信息
-export const doctorDetailApi = (params) => {
+export const doctorDetailApi = (params) => { // params:doctor_info.id
   return request.get(crudRoot.concat("/doctorBasicView"), { params, appPrefix: true })
 }
 /**

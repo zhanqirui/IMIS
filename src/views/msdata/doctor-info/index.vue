@@ -149,7 +149,7 @@
         return { totalElements: callback?.totalElements ?? 0, content: callback?.content || [] };
       } else {
         // 没有权限，调用 doctorDetailApi
-        const callback = await doctorDetailApi({ username: userRealName });
+        const callback = await doctorDetailApi({ username: userRealName }); // TODO: 写user_id
         const content = callback ? [{
           id: callback[0].id,
           name: callback[0].name,
