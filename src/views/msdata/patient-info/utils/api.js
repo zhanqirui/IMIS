@@ -43,6 +43,12 @@ export const detailApi = (params) => {
 export const patientDetailApi = (params) => {
   return request.get(crudRoot.concat("/patientBasicView"), { params, appPrefix: true })
 }
+
+
+//通过视图，利用医生id->医生所有相关的病人（部分信息）
+export const patientDoctorInfoApi = (params) => { // params:doctor_info.id
+  return request.get(crudRoot.concat("/patientDoctorInfoView"), { params, appPrefix: true })
+}
 /**
  * 
  * @param {import('./types').IPatientInfoQueryform & { pageIndex: number, pageSize: number }} params 

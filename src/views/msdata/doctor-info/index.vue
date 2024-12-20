@@ -1,5 +1,5 @@
 <template>
-  <el-button  class="fixed-button" type="success"  @click="navigateTo">跳转到详情页</el-button>
+  <!-- <el-button  class="fixed-button" type="success"  @click="navigateTo">跳转到详情页</el-button> -->
     <KQueryList>
       <!-- <KQueryNav></KQueryNav> -->
       <!-- 查询组件 -->
@@ -102,9 +102,9 @@
   </template>
 
   <script setup>
-  import { useRenderIcon, defineRouteMeta, access } from "@kesplus/kesplus";
+  import { useRenderIcon, defineRouteMeta, access, useUserInfo } from "@kesplus/kesplus";
   import { handleEdit, handleView, handleDelete } from "./utils/hook";
-  import { deleteApi, pageApi } from "./utils/api";
+  import { deleteApi, pageApi,doctorDetailApi } from "./utils/api";
   import { usePageModel } from "@@/plugin-platform/utils/hooks";
   import { getSortChangeStr } from "@@/plugin-platform/utils/tools";
   import { useRouter } from 'vue-router';
@@ -114,6 +114,10 @@
   defineRouteMeta({
     title: "医生信息"
   })
+
+  const userInfo = useUserInfo();
+  const userRealID= userInfo.value.username;
+  
   // #region 列表数据
   const {
     queryForm,
@@ -149,7 +153,7 @@
         return { totalElements: callback?.totalElements ?? 0, content: callback?.content || [] };
       } else {
         // 没有权限，调用 doctorDetailApi
-        const callback = await doctorDetailApi({ username: userRealName }); // TODO: 写user_id
+        const callback = await doctorDetailApi({ username: userRealID }); // TODO: 写user_id
         const content = callback ? [{
           id: callback[0].id,
           name: callback[0].name,
@@ -169,7 +173,7 @@
     });
   // #endregion
 
-  access.hasAccess("msdata:doctorInfo:detail") && fetchData()
+fetchData()
 
   // #region 列表字段
   /** @type {TableColumnList} */
@@ -248,10 +252,10 @@
   // #endregion
 
 
-  const router = useRouter();
-  function navigateTo() {
-    router.push({ path: "/patient_view" });
-  }
+  // const router = useRouter();
+  // function navigateTo() {
+  //   router.push({ path: "/patient_view" });
+  // }
 </script>
 
 

@@ -93,7 +93,7 @@
 <script setup>
 import { useRenderIcon, defineRouteMeta, access, useUserInfo } from "@kesplus/kesplus";
 import { handleEdit, handleView, handleDelete } from "./utils/hook";
-import { deleteApi, pageApi, patientDetailApi} from "./utils/api";
+import { deleteApi, pageApi, patientDetailApi,patientDoctorInfoApi} from "./utils/api";
 import { usePageModel } from "@@/plugin-platform/utils/hooks";
 import { getSortChangeStr } from "@@/plugin-platform/utils/tools";
 
@@ -105,8 +105,9 @@ defineRouteMeta({
 
 //获得用户信息
 const userInfo = useUserInfo();
-//获得真实姓名
+//获得真实姓名heID
 const userRealName = userInfo.value.realName;
+const userRealID = userInfo.value.username;
 
 // #region 列表数据
 const {
@@ -142,9 +143,10 @@ const {
         });
         return { totalElements: callback?.totalElements ?? 0, content: callback?.content || [] };
       } else {
-        // 没有权限，调用 patientDetailApi
-        const callback = await patientDetailApi({ username: userRealName });
-        const content = callback ? [{
+        if (userRealID.startsWith("PAD")) {
+  // 如果前三位是 "PAD"，则执行这里的代码
+          const callback = await patientDetailApi({ username: userRealID });
+          const content = callback ? [{
           id: callback[0].id,
           name: callback[0].name,
           gender: callback[0].gender,
@@ -156,6 +158,36 @@ const {
           deptId: '0000'
         }] : [];
         return { totalElements: callback ? 1 : 0, content };
+          } else {
+  // 如果前三位不是 "PAD"，则执行这里的代码
+      const callback = await patientDoctorInfoApi({ username: userRealID });
+      // const content = callback ? [{
+      //     id: callback[0].id,
+      //     name: callback[0].name,
+      //     gender: callback[0].gender,
+      //     age: callback[0].age,
+      //     idNumber: callback[0].id_number,
+      //     phone: callback[0].phone,
+      //     emergencyContact: callback[0].emergency_contact,
+      //     moduleCode: 'MSDATA',
+      //     deptId: '0000'
+      //   }] : [];
+      //   return { totalElements: callback ? 1 : 0, content };
+      const content = callback.map(item => ({
+  id: item.id,
+  name: item.name,
+  gender: item.gender,
+  age: item.age,
+  idNumber: item.id_number,
+  phone: item.phone,
+  emergencyContact: item.emergency_contact,
+  moduleCode: 'MSDATA',
+  deptId: '0000'
+}));
+return { totalElements: callback.length, content };
+}
+        // 没有权限，调用 patientDetailApi
+       
       }
     },
     hasPermission: () => access.hasAccess("msdata:patientInfo:detail")
