@@ -7,7 +7,9 @@
         <el-form-item label="医院名称">
           <el-input v-model="queryForm.hospitalName" placeholder="请输入" clearable />
         </el-form-item> 
-      </KQueryForm>
+      
+    
+        </KQueryForm>
       
       <KQueryTable>
         <KTableBar title="医院信息" :columns="columns" @refresh="fetchData">

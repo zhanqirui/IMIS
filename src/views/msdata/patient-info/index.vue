@@ -97,6 +97,10 @@
   import { usePageModel } from "@@/plugin-platform/utils/hooks";
   import { getSortChangeStr } from "@@/plugin-platform/utils/tools";
 
+  import { useUserInfo } from "@kesplus/kesplus"
+  const userInfo = useUserInfo();
+  const user_realname = userInfo?.value.realname || "";
+
   defineOptions({ handleEdit, handleView })
 
   defineRouteMeta({
@@ -212,5 +216,41 @@
       }
   ];
   // #endregion
+  
+  const user_params = {
+    username: "病人",
 
-  </script>
+  }
+  import { request } from '@kesplus/kesplus'
+  const {
+    loading:v17rLoading,
+    queryForm:v17rQueryForm,
+    resetForm:v17rResetForm,
+    pagination:v17rPagination,
+    listData:v17rListData,
+    fetchData:v17rFetchData,
+    resetPage:v17rResetPage,
+    handlePageSizeChange: handleV17rPageSizeChange,
+    handleCurrentPageChange:handleV17rPageChange,
+    handelSortChange:handleV17rSortChange,
+    selectedRows:v17rSelectedRows,
+    handleSelectionChange:handleV17rSelectionChange,
+  } = usePageModel({
+    // 查询条件
+    queryForm: {
+      orderColumns: "",
+    },
+    // 每页个数
+    pageSize: 10,
+    fetch: async (_pager) => {
+      const callback = await request.get('/MSDATA/patientInfo/patientBasicView', {user_params});
+      return {
+        totalElements: callback?.totalElements ?? callback?.length ?? 0,
+        content: callback?.content || callback || [],
+      };
+    },
+    hasPermission: () => access.hasAccess("patient_basic_view")
+  });
+  access.hasAccess("patient_basic_view") && v17rFetchData();
+
+</script>

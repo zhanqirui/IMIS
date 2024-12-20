@@ -1,7 +1,8 @@
 <template>
+  <el-button class="fixed-button" type="success" @click="goToDetailPage">跳转到详情页</el-button>
     <KQueryList>
       <!-- <KQueryNav></KQueryNav> -->
-      
+      <!-- 查询组件 -->
       <KQueryForm>
         
         <el-form-item label="科室ID">
@@ -13,19 +14,18 @@
         <el-form-item label="身份证号">
           <el-input v-model="queryForm.idNumber" placeholder="请输入" clearable />
         </el-form-item> 
-      </KQueryForm>
-      
-      <KQueryTable>
-        <KTableBar title="医生信息" :columns="columns" @refresh="fetchData">
+         </KQueryForm>
+      <!-- 查询结果-列表组件 --> <KQueryTable>
+         <el-divider /><KTableBar    :data="[  {    column: '序号',  },]" title="医生信息" :columns="columns" @refresh="fetchData">
           <template #buttons>
-            <el-button
+            <!-- <el-button
               v-access="'msdata:doctorInfo:add'"
               type="primary"
               :icon="useRenderIcon('Plus')"
-              @click="() => handleEdit({ title: '新增医生信息', effect: fetchData })"
+              @click="() => handleEdit({ title: '新增医生信息=', effect: fetchData })"
             >
               新增
-            </el-button>
+            </el-button> -->
           </template>
           <template #default="{ size, dynamicColumns }">
             <KTable
@@ -86,7 +86,7 @@
             </KTable>
           </template>
         </KTableBar>
-      </KQueryTable>
+      </KQueryTable><el-button    :round="true" @click="navigateTo"  type="primary">提交</el-button> 
     </KQueryList>
   </template>
 
@@ -96,6 +96,7 @@
   import { deleteApi, pageApi } from "./utils/api";
   import { usePageModel } from "@@/plugin-platform/utils/hooks";
   import { getSortChangeStr } from "@@/plugin-platform/utils/tools";
+  import { useRouter } from 'vue-router';
 
   defineOptions({ handleEdit, handleView })
 
@@ -212,5 +213,12 @@
       }
   ];
   // #endregion
+  const router = useRouter();
 
-  </script>
+  
+import { useRouter, useRoute } from "@@/core/coreExports";
+const router = useRouter();
+function navigateTo() {
+  router.push({ path: "/patient_view" });
+}
+</script>
