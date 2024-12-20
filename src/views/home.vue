@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div  class="background">
 
       
   <KCol>
@@ -25,52 +25,29 @@
 
     <KCell><el-space wrap></el-space></KCell>
     
-                <KRow>
-                  <KCell><el-calendar /></KCell>
-                  <KCell>
-                    <!-- <div v-html="currentExplanation"></div> -->
-                  </KCell>
-                </KRow>
-  </KCol>
+                
+  <KRow>
+   
+                  <KCell ><el-calendar  style="width:600px;height:500px;background-color: rgba(255, 255, 255, 0.5);margin-left: 0px;"/>
+      </KCell>
+                
+
+    
+
+    <KCell class="background">
+        <KCell><el-card header="我是卡片" style="width:600px;height:500px;weight:500px;background-color: rgba(255, 255, 255, 0.5);margin-left: 0px;"/></KCell></KCell>
+        <KCell >
+    
+              
+        
+    
+   </KCell></KRow></KCol>
       </div>
 </template>
 <script setup>
 import { defineRouteMeta, KDashboard } from "@kesplus/kesplus";
 
-
-// defineOptions({
-//   name: "UserHome",
-// });
-// </script>
-// <script>
-// defineRouteMeta({
-//   name: "home",
-//   title: "工作台",
-//   "keep-alive": true,
-//   icon: "HomeFilled",
-//   isAffix: true,
-// });
-
-
-// export default {
-//   data() {
-//     return {
-//       items: [
-//         { image: '/pictures/5rr0tedn.png', explanation: '解释文本1' },
-//         { image: '/pictures/neuy55er.png', explanation: '解释文本2' },
-//         { image: '/pictures/hospital3.png', explanation: '解释文本3' },
-//       ],
-//             currentExplanation: ''
-//     };
-//   },
-//   methods: {
-//     handleCarouselChange(newIndex, oldIndex) {
-//       // 更新当前解释文本
-//       this.currentExplanation = this.items[newIndex].explanation;
-//     }
-//   }
-// };
-// </script>
+</script>
 
 <style>
 .page {
@@ -83,5 +60,34 @@ import { defineRouteMeta, KDashboard } from "@kesplus/kesplus";
   margin-left: 50px; /* 这里的20px可以根据需要调整 */
   width: 900px;
   height: 600px;
+}
+</style>
+
+<style>
+.page {
+  height: 1000px;
+}
+
+.el-calendar {
+  margin-left: 50px; /* 这里的20px可以根据需要调整 */
+  width: 900px;
+  height: 600px;
+}
+
+.custom-tabs .el-tabs__nav-wrap::after,
+.custom-tabs .el-tabs__nav-scroll {
+  height: 500px !important; /* 调整为你想要的高度 */
+}
+
+.custom-tabs .el-tabs__item {
+  height: 500px !important; /* 调整为你想要的高度 */
+  line-height: 500px !important; /* 调整为与高度一致，以垂直居中 */
+}
+</style>
+
+<style scoped>
+.background {
+  background-color: #d0d3df;
+
 }
 </style>
