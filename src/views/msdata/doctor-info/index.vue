@@ -19,7 +19,6 @@
          <el-divider /><KTableBar    :data="[  {    column: '序号',  },]" title="医生信息" :columns="columns" @refresh="fetchData">
           <template #buttons>
             <el-button
-            class="fixed-button-add"
               v-access="'msdata:doctorInfo:add'"
               type="primary"
               :icon="useRenderIcon('Plus')"
@@ -98,7 +97,7 @@
             </KTable>
           </template>
         </KTableBar>
-      </KQueryTable><el-button    :round="true" @click="navigateTo"  type="primary">提交</el-button> 
+      </KQueryTable>
     </KQueryList>
   </template>
 
@@ -227,10 +226,15 @@
   // #endregion
   const router = useRouter();
 
-  
-import { useRouter, useRoute } from "@@/core/coreExports";
-const router = useRouter();
-function navigateTo() {
-  router.push({ path: "/patient_view" });
+const goToDetailPage = () => {
+  router.push('/doctor/doctor'); // 替换为你要跳转的路由路径
+};
+  </script>
+
+<style scoped>
+.fixed-button {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
 }
-</script>
+</style>
