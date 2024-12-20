@@ -18,14 +18,15 @@
       <!-- 查询结果-列表组件 --> <KQueryTable>
          <el-divider /><KTableBar    :data="[  {    column: '序号',  },]" title="医生信息" :columns="columns" @refresh="fetchData">
           <template #buttons>
-            <!-- <el-button
+            <el-button
+            class="fixed-button-add"
               v-access="'msdata:doctorInfo:add'"
               type="primary"
               :icon="useRenderIcon('Plus')"
               @click="() => handleEdit({ title: '新增医生信息=', effect: fetchData })"
             >
               新增
-            </el-button> -->
+            </el-button>
           </template>
           <template #default="{ size, dynamicColumns }">
             <KTable
@@ -82,6 +83,17 @@
                 >
                   删除
                 </el-button>
+                <!-- 新增跳转到主页的按钮 -->
+  <el-button
+    class="!m-0"
+    link
+    type="success"
+    :size="size"
+    :icon="useRenderIcon('Home')"
+    @click="goToHomePage"
+  >
+    主页
+  </el-button>
               </template>
             </KTable>
           </template>

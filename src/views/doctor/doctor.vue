@@ -1,87 +1,18 @@
 .page-margin {
-  margin: px;
+  margin: 20px;
 }
 
 <template>
   <KPage>
-    
+ <el-image src="/pictures/yetou.png" class="page-margin"/>   
   <KSection>
 <KCell>
 <!-- 主页面信息-病人画像 -->
-<el-image src="/pictures/yetou.png" class="page-margin"/>
+
       <el-tabs type="border-card">
-        <el-tab-pane label="医生画像">
-    <el-form ref="formRef" label-width="auto" :model="form">
-      <KRow>
-        <KCell></KCell>
-      </KRow>
-    </el-form>
-  <KRow>
 
-              <KCol>
-                <KCell><el-image          fit="none"   src="/pictures/zqr.png" style="width: 300px; height: 400px;" /></KCell>
-                <KCell><KCell><KText style="text-align: center; font-family: 'DengXian', sans-serif;;font-size: 20px;">病人图片</KText></KCell></KCell>
-              </KCol><KCell><el-card header="您的个人信息" style="font-size: 24px;width:800px; height: 500px;">
-</el-card></KCell>
-<KCell><el-calendar /></KCell>
-</KRow>
-  <KCol>
-              <KRow>
-                
-              <KCol>
-                
-                <KCell></KCell>
-              </KCol>
-                <KCell></KCell>
-              </KRow>
-    <KCell>
-    <el-carousel style="width:100%;" :autoplay="false">
-      <el-carousel-item >
-        <el-empty />
-      </el-carousel-item>
-      <el-carousel-item >
-        <el-empty />
-      </el-carousel-item>
-    </el-carousel>
-        </KCell>
-    
-  </KCol>
-      </el-tab-pane>
       
-<el-tab-pane label="病人一览">
-    
-  <KCol>
-    <KCell>
-  <KCol>
-    
-              
-    
-    
-  
-        
-    <KText>请您进行病人和病历的管理与查看。</KText></KCol>
-      </KCell>
-    <KCell>
-        <KTableBar title="您的病人"/>
-      </KCell>
-    <KCell>
-    
-        
-    <KCell>
-    
-        
-      
-      
-        
-            </KCell>
-        </KCell>
-  </KCol>
-      <el-timeline>
-        
 
-        
-    </el-timeline>
-    </el-tab-pane>
 
 <el-tab-pane label="病情诊断">
   <KCol>
@@ -209,6 +140,7 @@
     
         
     </KCell>
+
     
 
     </KSection></KPage>
