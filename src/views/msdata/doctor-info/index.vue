@@ -19,6 +19,8 @@
          <el-divider /><KTableBar    :data="[  {    column: '序号',  },]" title="医生信息" :columns="columns" @refresh="fetchData">
           <template #buttons>
             <el-button
+            <el-button
+            class="fixed-button-add"
               v-access="'msdata:doctorInfo:add'"
               type="primary"
               :icon="useRenderIcon('Plus')"
@@ -82,6 +84,17 @@
                 >
                   删除
                 </el-button>
+                <!-- 新增跳转到主页的按钮 -->
+  <el-button
+    class="!m-0"
+    link
+    type="success"
+    :size="size"
+    :icon="useRenderIcon('Home')"
+    @click="goToHomePage"
+  >
+    主页
+  </el-button>
               </template>
             </KTable>
           </template>

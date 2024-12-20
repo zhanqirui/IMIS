@@ -1,4 +1,4 @@
-id,module_code,dept_id,medical_record_id,medical_knowledge_id,integration_decision
+id,module_code,dept_id,medical_record_id,medical_knowledge_id,intelligent_decision
 INTELLI000001,MSDATA,0000,REC000001,KNOW000017,推荐患者使用中医推拿理疗，结合外科手术解决病症。
 INTELLI000002,MSDATA,0000,REC000002,KNOW000060,推荐患者采用中医理疗与心理干预的综合治疗方案。
 INTELLI000003,MSDATA,0000,REC000003,KNOW000018,建议患者通过中药外敷治疗病症，结合药物治疗减轻症状。
