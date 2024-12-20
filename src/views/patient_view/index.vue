@@ -3,7 +3,7 @@
 }
 
 <template>
-  <div v-access="'/patient_view'" >
+  <div>
     <!-- 整个页面的内容都在这个 div 下面 -->
 
     <KPage>

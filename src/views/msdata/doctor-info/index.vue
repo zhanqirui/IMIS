@@ -1,5 +1,5 @@
 <template>
-  <el-button class="fixed-button" type="success" @click="goToDetailPage">跳转到详情页</el-button>
+  <el-button  class="fixed-button" type="success"  @click="navigateTo">跳转到详情页</el-button>
     <KQueryList>
       <!-- <KQueryNav></KQueryNav> -->
       <!-- 查询组件 -->
@@ -18,14 +18,14 @@
       <!-- 查询结果-列表组件 --> <KQueryTable>
          <el-divider /><KTableBar    :data="[  {    column: '序号',  },]" title="医生信息" :columns="columns" @refresh="fetchData">
           <template #buttons>
-            <!-- <el-button
+            <el-button
               v-access="'msdata:doctorInfo:add'"
               type="primary"
               :icon="useRenderIcon('Plus')"
               @click="() => handleEdit({ title: '新增医生信息=', effect: fetchData })"
             >
               新增
-            </el-button> -->
+            </el-button>
           </template>
           <template #default="{ size, dynamicColumns }">
             <KTable
@@ -213,12 +213,10 @@
       }
   ];
   // #endregion
-  const router = useRouter();
 
-  
-import { useRouter, useRoute } from "@@/core/coreExports";
-const router = useRouter();
-function navigateTo() {
-  router.push({ path: "/patient_view" });
-}
+
+  const router = useRouter();
+  function navigateTo() {
+    router.push({ path: "/patient_view" });
+  }
 </script>
