@@ -98,7 +98,7 @@
             </KTable>
           </template>
         </KTableBar>
-      </KQueryTable>
+      </KQueryTable><el-button    :round="true" @click="navigateTo"  type="primary">提交</el-button> 
     </KQueryList>
   </template>
 
@@ -227,15 +227,10 @@
   // #endregion
   const router = useRouter();
 
-const goToDetailPage = () => {
-  router.push('/doctor/doctor'); // 替换为你要跳转的路由路径
-};
-  </script>
-
-<style scoped>
-.fixed-button {
-  position: fixed;
-  bottom: 0px;
-  right: 0px;
+  
+import { useRouter, useRoute } from "@@/core/coreExports";
+const router = useRouter();
+function navigateTo() {
+  router.push({ path: "/patient_view" });
 }
-</style>
+</script>

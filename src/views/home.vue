@@ -5,6 +5,23 @@
 </template>
 <script setup>
 import { defineRouteMeta, KDashboard } from "@kesplus/kesplus";
+// import { access } from '@kesplus/kesplus';
+// import { useRouter, onBeforeMount } from 'vue-router';
+
+// const router = useRouter();
+
+// onBeforeMount(() => {
+//   const role = access.getRole();
+
+//   if (role === 'admin') {
+//     return router.replace('/patient');
+//   } else if (role === 'user') {
+//     return router.replace('/user-dashboard');
+//   } else {
+//     return router.replace('/login');
+//   }
+// });
+
 defineOptions({
   name: "UserHome",
 });

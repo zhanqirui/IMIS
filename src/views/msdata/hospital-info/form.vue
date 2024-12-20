@@ -32,11 +32,7 @@
                 </el-form-item>
               </KCell>
             
-              <KCell>
-                <el-form-item label="智能决策模型被采用率" prop="modelAdoptionRate" :rules="[required]" data-grid-span="1">
-                  <el-input v-model="form.modelAdoptionRate" placeholder="请输入智能决策模型被采用率" clearable/>
-                </el-form-item>
-              </KCell>
+              
                       
             </KCol>
           </KBlock>
