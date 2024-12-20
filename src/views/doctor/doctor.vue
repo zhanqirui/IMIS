@@ -7,63 +7,45 @@
  <el-image src="/pictures/yetou.png" class="page-margin"/>   
   <KSection>
 <KCell>
-<!-- 主页面信息-病人画像 -->
-
+<!-- 主页面 -->
       <el-tabs type="border-card">
-
-      
-
-
-<el-tab-pane label="病情诊断">
-  <KCol>
+      <el-tab-pane label="病情诊断">
+       <KCol>
     <KCell>
-    <KCell>
-    <el-form ref="formRef" label-width="auto" :model="form"><KRow>
-        
-      
+    <el-form ref="formRef" label-width="auto" :model="form">
+      <KRow>
         <KText>请您填写当前病人的具体信息，以便于我们为您提供更好的诊断。</KText>
-            </KRow>
-       <el-divider />
+      </KRow>
     </el-form>
-  </KCell>
+    </KCell>
+      <KRow>
+    <KCell>
+      <el-form-item label="表单项">
+        <k-form-input />
+      </el-form-item>
+
+      <el-form-item label="表单项">
+        <k-form-input />
+      </el-form-item>
+     </KCell>
+        <KCell>
+      <el-form-item label="表单项">
+        <k-form-input />
+      </el-form-item>
+      <el-form-item label="表单项">
+      <k-form-input />
+      </el-form-item>
         </KCell>
-    
-              <KRow>
-                <KCell><KCell>
-      
-   
-      <el-form-item label="表单项">
-        
-      
-        <k-form-input />
-      </el-form-item><el-form-item label="表单项">
-        
-      
-        <k-form-input />
-      </el-form-item>
-   </KCell></KCell><KCell><KCell>
-      <el-form-item label="表单项">
-        
-      
-        <k-form-input />
-      </el-form-item><el-form-item label="表单项">
-        
-      
-        <k-form-input />
-      </el-form-item>
-   </KCell></KCell>
                 <KCell><KCell>
       <el-form-item label="表单项">
-        
-      
         <k-form-input />
       </el-form-item><el-form-item label="表单项">
-        
-      
         <k-form-input />
       </el-form-item>
    </KCell></KCell>
               </KRow>
+
+<!-- <兵力信息> -->
     <KCell>
   <KCol>
     

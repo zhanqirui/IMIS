@@ -13,7 +13,7 @@
       <el-form-item label="身份证号">
         <el-input v-model="queryForm.idNumber" placeholder="请输入" clearable />
       </el-form-item> 
-    </KQueryForm>
+     <el-button><el-text>确认</el-text></el-button> </KQueryForm>
     
     <KQueryTable>
       <KTableBar title="病患信息" :columns="columns" @refresh="fetchData">
@@ -91,21 +91,23 @@
 </template>
 
 <script setup>
-import { useRenderIcon, defineRouteMeta, access } from "@kesplus/kesplus";
+import { useRenderIcon, defineRouteMeta, access, useUserInfo } from "@kesplus/kesplus";
 import { handleEdit, handleView, handleDelete } from "./utils/hook";
-import { deleteApi, pageApi } from "./utils/api";
+import { deleteApi, pageApi, patientDetailApi} from "./utils/api";
 import { usePageModel } from "@@/plugin-platform/utils/hooks";
 import { getSortChangeStr } from "@@/plugin-platform/utils/tools";
-
-import { useUserInfo } from "@kesplus/kesplus"
-const userInfo = useUserInfo();
-const user_realname = userInfo?.value.realname || "";
 
 defineOptions({ handleEdit, handleView })
 
 defineRouteMeta({
   title: "病患信息"
 })
+
+//获得用户信息
+const userInfo = useUserInfo();
+//获得真实姓名
+const userRealName = userInfo.value.realName;
+
 // #region 列表数据
 const {
   queryForm,
@@ -122,24 +124,45 @@ const {
 } = usePageModel({
     queryForm: {
       orderColumns: "",
-                      name:"",
-                gender:"",
-                idNumber:"",
-                  },
+      name: "",
+      gender: "",
+      idNumber: "",
+    },
     pageSize: 10,
     fetch: async _pager => {
-      const callback = await pageApi({
-        ...queryForm,
-        pageIndex: _pager.currentPage,
-        pageSize: _pager.pageSize,
-      });
-      return { totalElements: callback?.totalElements ?? 0, content: callback?.content || [] };
+      // 检查用户是否有权限
+      const hasDetailPermission = access.hasAccess("msdata:patientInfo:detail");
+
+      if (hasDetailPermission) {
+        // 有权限，调用 pageApi
+        const callback = await pageApi({
+          ...queryForm,
+          pageIndex: _pager.currentPage,
+          pageSize: _pager.pageSize,
+        });
+        return { totalElements: callback?.totalElements ?? 0, content: callback?.content || [] };
+      } else {
+        // 没有权限，调用 patientDetailApi
+        const callback = await patientDetailApi({ username: userRealName });
+        const content = callback ? [{
+          id: callback[0].id,
+          name: callback[0].name,
+          gender: callback[0].gender,
+          age: callback[0].age,
+          idNumber: callback[0].id_number,
+          phone: callback[0].phone,
+          emergencyContact: callback[0].emergency_contact,
+          moduleCode: 'MSDATA',
+          deptId: '0000'
+        }] : [];
+        return { totalElements: callback ? 1 : 0, content };
+      }
     },
     hasPermission: () => access.hasAccess("msdata:patientInfo:detail")
   });
 // #endregion
 
-access.hasAccess("msdata:patientInfo:detail") && fetchData()
+fetchData()
 
 // #region 列表字段
 /** @type {TableColumnList} */
@@ -216,44 +239,5 @@ const columns = [
     }
 ];
 // #endregion
-
-const user_params = {
-  username: "病人",
-
-}
-import { request } from '@kesplus/kesplus'
-const {
-  loading:v17rLoading,
-  queryForm:v17rQueryForm,
-  resetForm:v17rResetForm,
-  pagination:v17rPagination,
-  listData:v17rListData,
-  fetchData:v17rFetchData,
-  resetPage:v17rResetPage,
-  handlePageSizeChange: handleV17rPageSizeChange,
-  handleCurrentPageChange:handleV17rPageChange,
-  handelSortChange:handleV17rSortChange,
-  selectedRows:v17rSelectedRows,
-  handleSelectionChange:handleV17rSelectionChange,
-} = usePageModel({
-  // 查询条件
-  queryForm: {
-    orderColumns: "",
-  },
-  // 每页个数
-  pageSize: 10,
-  fetch: async (_pager) => {
-    const callback = await request.get('/MSDATA/patientInfo/patientBasicView', {  
-      params: {
-          username: "李沛霖"
-    }});
-    return {
-      totalElements: callback?.totalElements ?? callback?.length ?? 0,
-      content: callback?.content || callback || [],
-    };
-  },
-  hasPermission: () => access.hasAccess("patient_basic_view")
-});
-access.hasAccess("patient_basic_view") && v17rFetchData();
 
 </script>
