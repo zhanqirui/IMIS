@@ -123,7 +123,7 @@
     pagination,
     handlePageSizeChange,
     handleCurrentPageChange,
-    fetchData,
+    fetchData,// 刷新列表数据
     selectedRows,
     handleSelectionChange,
     handelSortChange,
@@ -136,12 +136,34 @@
                     },
       pageSize: 10,
       fetch: async _pager => {
+        // 检查用户是否有权限
+      const hasDetailPermission = access.hasAccess("msdata:doctorInfo:detail");
+        //判断是否有权限
+      if (hasDetailPermission) {
+        // 有权限，调用 pageApi 正常显示
         const callback = await pageApi({
           ...queryForm,
           pageIndex: _pager.currentPage,
           pageSize: _pager.pageSize,
         });
         return { totalElements: callback?.totalElements ?? 0, content: callback?.content || [] };
+      } else {
+        // 没有权限，调用 doctorDetailApi
+        const callback = await doctorDetailApi({ username: userRealName });
+        const content = callback ? [{
+          id: callback[0].id,
+          name: callback[0].name,
+          gender: callback[0].gender,
+          age: callback[0].age,
+          idNumber: callback[0].id_number,
+          phone: callback[0].phone,
+          departmentId: callback[0].departmentId,
+          moduleCode: 'MSDATA',
+          deptId: '0000'
+        }] : [];
+        return { totalElements: callback ? 1 : 0, content };
+        //no answer-?all elements?
+      }
       },
       hasPermission: () => access.hasAccess("msdata:doctorInfo:detail")
     });

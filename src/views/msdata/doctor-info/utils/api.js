@@ -35,6 +35,11 @@ export const deleteApi = (params) => {
 export const detailApi = (params) => {
   return request.get(crudRoot.concat("/detail"), { params, appPrefix: true})
 }
+
+//通过视图获得医生信息
+export const doctorDetailApi = (params) => {
+  return request.get(crudRoot.concat("/doctorBasicView"), { params, appPrefix: true })
+}
 /**
  * 
  * @param {import('./types').IDoctorInfoQueryform & { pageIndex: number, pageSize: number }} params 

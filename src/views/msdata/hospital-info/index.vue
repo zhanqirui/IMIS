@@ -107,7 +107,7 @@
     pagination,
     handlePageSizeChange,
     handleCurrentPageChange,
-    fetchData,
+    fetchData,//you can use this function to fetch data from server
     selectedRows,
     handleSelectionChange,
     handelSortChange,
