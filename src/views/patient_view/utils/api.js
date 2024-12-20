@@ -1,9 +1,9 @@
 import { request } from "@kesplus/kesplus";
 
-const crudRoot = "/MSDATA/patientInfo";
+const crudRoot = "/patientView";
 /**
  * 
- * @param {import('./types').IPatientInfoForm} params 
+ * @param {import('./types').IPatientViewForm} params 
  * @returns 
  */
 export const addApi = (params) => {
@@ -11,7 +11,7 @@ export const addApi = (params) => {
 }
 /**
  * 
- * @param {import('./types').IPatientInfoForm} params 
+ * @param {import('./types').IPatientViewForm} params 
  * @returns 
  */
 export const updateApi = (params) => {
@@ -36,16 +36,8 @@ export const detailApi = (params) => {
   return request.get(crudRoot.concat("/detail"), { params, appPrefix: true})
 }
 /**
- * @param {Object} params 
- * @param {String} params.id
- * @returns 
- */
-export const patientDetailApi = (params) => {
-  return request.get(crudRoot.concat("/patientBasicView"), { params, appPrefix: true })
-}
-/**
  * 
- * @param {import('./types').IPatientInfoQueryform & { pageIndex: number, pageSize: number }} params 
+ * @param {import('./types').IPatientViewQueryform & { pageIndex: number, pageSize: number }} params 
  * @returns 
  */
 export const pageApi = (params) => {
@@ -54,11 +46,10 @@ export const pageApi = (params) => {
   
 /**
  * 
- * @param {import('./types').IPatientInfoQueryform } params 
+ * @param {import('./types').IPatientViewQueryform } params 
  * @returns 
  */
 export const listApi = (params) => {
   return request.get(crudRoot.concat("/list"), { params, appPrefix: true })
 }
-
-
+  

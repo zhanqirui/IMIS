@@ -20,23 +20,11 @@
                 </el-form-item>
               </KCell>
             
-              <KCell>
-                <el-form-item label="大模型使用次数" prop="modelUseCount" :rules="[]" data-grid-span="1">
-                  <el-input-number v-model="form.modelUseCount" placeholder="请输入大模型使用次数" clearable/>
-                </el-form-item>
-              </KCell>
+              
             
-              <KCell>
-                <el-form-item label="采纳率" prop="adoptionRate" :rules="[]" data-grid-span="1">
-                  <el-input v-model="form.adoptionRate" placeholder="请输入采纳率" clearable/>
-                </el-form-item>
-              </KCell>
+              
             
-              <KCell>
-                <el-form-item label="累计就诊次数" prop="totalVisits" :rules="[]" data-grid-span="1">
-                  <el-input-number v-model="form.totalVisits" placeholder="请输入累计就诊次数" clearable/>
-                </el-form-item>
-              </KCell>
+              
                       
             </KCol>
           </KBlock>
