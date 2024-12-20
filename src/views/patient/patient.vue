@@ -8,29 +8,10 @@
   <KSection>
 <KCell>
 <!-- 主页面信息-病人画像 -->
-<el-image src="/pictures/yetou.png" class="page-margin"/>
-      <el-tabs type="border-card">
-        <el-tab-pane label="病人画像"><KRow>
 
-              <KCol>
-                <KCell><el-image          fit="none"   src="/pictures/zqr.png" style="width: 300px; height: 400px;" /></KCell>
-                <KCell><KCell><KText style="text-align: center; font-family: 'DengXian', sans-serif;;font-size: 20px;">病人图片</KText></KCell></KCell>
-              </KCol><KCell><el-card header="您的个人信息" style="font-size: 24px;width:800px; height: 500px;">
-</el-card></KCell>
-<KCell><el-calendar /></KCell>
-</KRow>
-  <KCol>
-              <KRow>
-                
-              <KCol>
-                
-                <KCell></KCell>
-              </KCol>
-                <KCell></KCell>
-              </KRow>
-    <KCell></KCell>
-    
-  </KCol>
+      <el-tabs type="border-card">
+        <el-tab-pane label="病人画像">
+  
       </el-tab-pane>
       
 <el-tab-pane label="过往病历">
@@ -118,4 +99,6 @@ const form_1_1 = reactive({})
 const form_1_1_1 = reactive({})
 
 const form_1_1_1_1 = reactive({})
+
+const form_1_1_1_1_1 = reactive({})
 </script>
