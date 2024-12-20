@@ -13,7 +13,7 @@
         <el-form-item label="身份证号">
           <el-input v-model="queryForm.idNumber" placeholder="请输入" clearable />
         </el-form-item> 
-       <el-button><el-text>确认</el-text></el-button> </KQueryForm>
+      </KQueryForm>
       
       <KQueryTable>
         <KTableBar title="病患信息" :columns="columns" @refresh="fetchData">
@@ -96,6 +96,10 @@
   import { deleteApi, pageApi } from "./utils/api";
   import { usePageModel } from "@@/plugin-platform/utils/hooks";
   import { getSortChangeStr } from "@@/plugin-platform/utils/tools";
+
+  import { useUserInfo } from "@kesplus/kesplus"
+  const userInfo = useUserInfo();
+  const user_realname = userInfo?.value.realname || "";
 
   defineOptions({ handleEdit, handleView })
 
@@ -212,5 +216,41 @@
       }
   ];
   // #endregion
+  
+  const user_params = {
+    username: "病人",
 
-  </script>
+  }
+  import { request } from '@kesplus/kesplus'
+  const {
+    loading:v17rLoading,
+    queryForm:v17rQueryForm,
+    resetForm:v17rResetForm,
+    pagination:v17rPagination,
+    listData:v17rListData,
+    fetchData:v17rFetchData,
+    resetPage:v17rResetPage,
+    handlePageSizeChange: handleV17rPageSizeChange,
+    handleCurrentPageChange:handleV17rPageChange,
+    handelSortChange:handleV17rSortChange,
+    selectedRows:v17rSelectedRows,
+    handleSelectionChange:handleV17rSelectionChange,
+  } = usePageModel({
+    // 查询条件
+    queryForm: {
+      orderColumns: "",
+    },
+    // 每页个数
+    pageSize: 10,
+    fetch: async (_pager) => {
+      const callback = await request.get('/MSDATA/patientInfo/patientBasicView', {user_params});
+      return {
+        totalElements: callback?.totalElements ?? callback?.length ?? 0,
+        content: callback?.content || callback || [],
+      };
+    },
+    hasPermission: () => access.hasAccess("patient_basic_view")
+  });
+  access.hasAccess("patient_basic_view") && v17rFetchData();
+
+</script>

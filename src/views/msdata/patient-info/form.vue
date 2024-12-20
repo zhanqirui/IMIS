@@ -1,5 +1,4 @@
 
-
 <template>
   <KDialogForm :read-pretty="readPretty">
     <el-form ref="formRef" :model="form" label-width="auto">

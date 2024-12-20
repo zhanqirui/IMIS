@@ -17,6 +17,6 @@ package-lock.json
 components.d.ts
 auto-imports.d.ts
 .config
-.kesplus.local.js
+.kesplus.local.jss
 IMIS.ksp
 public/server.json

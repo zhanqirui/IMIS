@@ -1,9 +1,9 @@
 .page-margin {
-  margin: px;
+  margin: 10px;
 }
 
 <template>
-  <div>
+  <div v-access="'/patient_view'" >
     <!-- 整个页面的内容都在这个 div 下面 -->
 
     <KPage>
@@ -12,7 +12,7 @@
         <KRow>
           <KCell><el-image src="/pictures/zqr.png" /></KCell>
           <KCell>
-            <el-form ref="formRef" label-width="auto" :model="form">
+            <el-form ref="formRef" :model="form">
               <KRow>
                 
                 <el-card header="您的个人信息" style="width: 900px; height: 400px;">
@@ -56,7 +56,7 @@
         
         <KBlock>
           <KCell>
-            <el-form ref="formRef" label-width="auto" :model="form">
+            <el-form ref="formRef" :model="form">
               <KRow>
                 <KCell>
                 

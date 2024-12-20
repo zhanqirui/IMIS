@@ -9,17 +9,21 @@ const buildConfig = {
   },
   title: "kesplus",
   router: {
-    // routes : [
-    //   {
-    //     path: "/", 
-    //     redirect: '/patient',
-    //   }
-    // ],
+    routes : [
+      {
+        path: '/patient_view',
+        component: () => import('@/views/patient_view/index.vue'),
+        meta: {
+          title: 'Patient Page',
+          access: '/patient_view', 
+        },
+      },
+    ],
     mode: "history",
   },
   access: {
     roles: {
-      admin: ["*"]
+      admin: ["*", '/patient_view']
     },
   },
 };

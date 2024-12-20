@@ -36,6 +36,14 @@ export const detailApi = (params) => {
   return request.get(crudRoot.concat("/detail"), { params, appPrefix: true})
 }
 /**
+ * @param {Object} params 
+ * @param {String} params.id
+ * @returns 
+ */
+export const patientDetailApi = (params) => {
+  return request.get(crudRoot.concat("/patientBasicView"), { params, appPrefix: true })
+}
+/**
  * 
  * @param {import('./types').IPatientInfoQueryform & { pageIndex: number, pageSize: number }} params 
  * @returns 
@@ -52,4 +60,5 @@ export const pageApi = (params) => {
 export const listApi = (params) => {
   return request.get(crudRoot.concat("/list"), { params, appPrefix: true })
 }
-  
+
+
