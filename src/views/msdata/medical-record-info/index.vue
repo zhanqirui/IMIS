@@ -97,17 +97,23 @@
   </template>
 
   <script setup>
-  import { useRenderIcon, defineRouteMeta, access } from "@kesplus/kesplus";
+  import { useRenderIcon, defineRouteMeta, access,useUserInfo } from "@kesplus/kesplus";
   import { handleEdit, handleView, handleDelete } from "./utils/hook";
-  import { deleteApi, pageApi } from "./utils/api";
+  import { deleteApi, pageApi,medicalRecordPatientInfoApi,medicalRecordDoctorInfoApi } from "./utils/api";
   import { usePageModel } from "@@/plugin-platform/utils/hooks";
   import { getSortChangeStr } from "@@/plugin-platform/utils/tools";
+import { patientDetailApi } from "../patient-info/utils/api";
 
   defineOptions({ handleEdit, handleView })
 
   defineRouteMeta({
     title: "病历信息"
   })
+
+  const userInfo = useUserInfo();
+//获得真实姓名heID
+// const userRealName = userInfo.value.realName;
+const userRealID = userInfo.value.username;
   // #region 列表数据
   const {
     queryForm,
@@ -132,18 +138,61 @@
                     },
       pageSize: 10,
       fetch: async _pager => {
-        const callback = await pageApi({
+        const hasDetailPermission = access.hasAccess("msdata:medicalRecordInfo:detail");
+        if (hasDetailPermission) 
+        {
+           const callback = await pageApi({
           ...queryForm,
           pageIndex: _pager.currentPage,
           pageSize: _pager.pageSize,
         });
         return { totalElements: callback?.totalElements ?? 0, content: callback?.content || [] };
+        }
+        else
+        {
+          if (userRealID.startsWith("PAT"))
+        {
+          const callback = await medicalRecordPatientInfoApi({ username: userRealID });
+          const content = callback.map(item => ({
+  id: item.id,
+  patientId: item.patient_id,
+  doctorId: item.doctor_id,
+  diagnosisCategory: item.diagnosis_category,
+  visitDate: item.visit_date,
+  departmentId: item.department_id,
+ selfReportedPastMedicalHistory: item.self_reported_past_medical_history,
+ patientCondition: item.patient_condition,
+  moduleCode: 'MSDATA',
+  deptId: '0000'
+}));
+return { totalElements: callback.length, content };
+        }
+        else
+        {
+          const callback = await medicalRecordDoctorInfoApi({ username: userRealID });
+          const content = callback.map(item => ({
+            id: item.id,
+  patientId: item.patient_id,
+  doctorId: item.doctor_id,
+  diagnosisCategory: item.diagnosis_category,
+  visitDate: item.visit_date,
+  departmentId: item.department_id,
+ selfReportedPastMedicalHistory: item.self_reported_past_medical_history,
+ patientCondition: item.patient_condition,
+  moduleCode: 'MSDATA',
+  deptId: '0000'
+}));
+return { totalElements: callback.length, content };
+        }
+        }
+       
+        
       },
       hasPermission: () => access.hasAccess("msdata:medicalRecordInfo:detail")
     });
   // #endregion
 
-  access.hasAccess("msdata:medicalRecordInfo:detail") && fetchData()
+fetchData()
 
   // #region 列表字段
   /** @type {TableColumnList} */

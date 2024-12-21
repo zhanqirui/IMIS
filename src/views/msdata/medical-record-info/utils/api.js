@@ -35,11 +35,11 @@ export const deleteApi = (params) => {
 export const detailApi = (params) => {
   return request.get(crudRoot.concat("/detail"), { params, appPrefix: true})
 }
-export const medicalRecordPatientInfo = (params) => {
-  return request.get(crudRoot.concat("/medicalRecordPatientInfo"), { params, appPrefix: true})
+export const medicalRecordPatientInfoApi = (params) => {
+  return request.get(crudRoot.concat("/medicalRecordPatientInfoView"), { params, appPrefix: true})
 }
-export const medicalRecordDoctorInfo = (params) => {
-  return request.get(crudRoot.concat("/medicalRecordDoctorInfo"), { params, appPrefix: true})
+export const medicalRecordDoctorInfoApi = (params) => {
+  return request.get(crudRoot.concat("/medicalRecordDoctorInfoView"), { params, appPrefix: true})
 }
 /**
  * 
