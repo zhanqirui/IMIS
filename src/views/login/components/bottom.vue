@@ -1,10 +1,10 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
   <div
-    class="absolute bottom-0 left-0 right-0 h-20 flex justify-between flex-items-center px-25 <sm:px-8"
+    class=" background_style absolute bottom-0 left-0 right-0 h-20 flex justify-between flex-items-center px-25 <sm:px-8"
   >
     
-  <div  class="w-full text-center dark:color-#fff" style="color: #ffffff;font-size: 24px;" v-html="copyRight"></div></div>
+  <div  class=" w-full text-center dark:color-#fff" style="color: #000000;font-size: 24px;" v-html="copyRight"></div></div>
 </template>
 
 <script setup>
