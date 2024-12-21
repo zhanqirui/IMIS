@@ -127,7 +127,7 @@ const validErrmsg = computed(() => {
 
 <style lang="scss" scoped>
 .login-container {
-  background-image: url("/src/images/background.svg");
+  background-image: url("/pictures/登陆界面.jpg");
 }
 .captcha :deep(.el-input-group__append) {
   padding: 0;
