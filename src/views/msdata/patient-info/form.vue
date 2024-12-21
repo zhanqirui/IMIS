@@ -6,7 +6,11 @@
         <KSection :no-padding="true">
           <KBlock :no-padding="true">
             <KCol>
-
+              <KCell>
+                <el-form-item label="账号" prop="idContent" :rules="[]" data-grid-span="1">
+                  <el-input v-model="form.id" placeholder="请输入账号" clearable/>
+                </el-form-item>
+              </KCell>
                       
               <KCell>
                 <el-form-item label="姓名" prop="name" :rules="[]" data-grid-span="1">
@@ -72,6 +76,7 @@ const { form, reset, submit, closeDialog } = useDialogForm({
   id: toRef(props, "id"),
   formRef,
   default: {
+    idContent:"",
     name: "",
     gender: "",
     age: "",
@@ -85,7 +90,7 @@ const { form, reset, submit, closeDialog } = useDialogForm({
   },
   save: model => {
     if (model.id) {
-      return updateApi(model);
+      return addApi(model);
     }
     return addApi(model);
   }

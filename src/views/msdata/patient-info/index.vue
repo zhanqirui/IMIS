@@ -143,7 +143,7 @@ const {
         });
         return { totalElements: callback?.totalElements ?? 0, content: callback?.content || [] };
       } else {
-        if (userRealID.startsWith("PAD")) {
+        if (userRealID.startsWith("PAT")) {
   // 如果前三位是 "PAD"，则执行这里的代码
           const callback = await patientDetailApi({ username: userRealID });
           const content = callback ? [{

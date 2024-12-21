@@ -7,7 +7,11 @@
           <KBlock :no-padding="true">
             <KCol>
 
-                      
+              <KCell>
+                <el-form-item label="ID" prop="idContent" :rules="[]" data-grid-span="1">
+                  <el-input v-model="form.id" placeholder="请输入ID"  clearable/>
+                </el-form-item>
+              </KCell>
               <KCell>
                 <el-form-item label="病人ID" prop="patientId" :rules="[]" data-grid-span="1">
                   <el-input v-model="form.patientId" placeholder="请输入病人ID" clearable/>
@@ -78,6 +82,8 @@ const { form, reset, submit, closeDialog } = useDialogForm({
   id: toRef(props, "id"),
   formRef,
   default: {
+    // id:"test000000",
+    // idContent:"test000000",
     patientId: "",
     doctorId: "",
     diagnosisCategory: "",
@@ -92,7 +98,7 @@ const { form, reset, submit, closeDialog } = useDialogForm({
   },
   save: model => {
     if (model.id) {
-      return updateApi(model);
+      return addApi(model);
     }
     return addApi(model);
   }

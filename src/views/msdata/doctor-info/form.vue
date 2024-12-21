@@ -6,7 +6,11 @@
         <KSection :no-padding="true">
           <KBlock :no-padding="true">
             <KCol>
-
+              <KCell>
+                <el-form-item label="账号" prop="id" :rules="[]" data-grid-span="1">
+                  <el-input v-model="form.id" placeholder="请输入ID" clearable/>
+                </el-form-item>
+              </KCell>
                       
               <KCell>
                 <el-form-item label="科室ID" prop="departmentId" :rules="[]" data-grid-span="1">
@@ -58,7 +62,7 @@ import { useSelect, useDialogForm } from "@@/plugin-platform/utils/hooks";
 import { required } from "@@/plugin-platform/utils/validators";
 import { addApi, updateApi, detailApi } from './utils/api'
 
-defineOptions({ inheritAttrs: false })
+defineOptions({ inhseritAttrs: false })
 
 const props = defineProps({
   id: { type: String },
@@ -72,6 +76,7 @@ const { form, reset, submit, closeDialog } = useDialogForm({
   id: toRef(props, "id"),
   formRef,
   default: {
+    idContent:"",
     departmentId: "",
     name: "",
     gender: "",
@@ -85,7 +90,7 @@ const { form, reset, submit, closeDialog } = useDialogForm({
   },
   save: model => {
     if (model.id) {
-      return updateApi(model);
+      return addApi(model);
     }
     return addApi(model);
   }
