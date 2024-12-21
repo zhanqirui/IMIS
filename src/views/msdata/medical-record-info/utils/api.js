@@ -35,6 +35,12 @@ export const deleteApi = (params) => {
 export const detailApi = (params) => {
   return request.get(crudRoot.concat("/detail"), { params, appPrefix: true})
 }
+export const medicalRecordPatientInfo = (params) => {
+  return request.get(crudRoot.concat("/medicalRecordPatientInfo"), { params, appPrefix: true})
+}
+export const medicalRecordDoctorInfo = (params) => {
+  return request.get(crudRoot.concat("/medicalRecordDoctorInfo"), { params, appPrefix: true})
+}
 /**
  * 
  * @param {import('./types').IMedicalRecordInfoQueryform & { pageIndex: number, pageSize: number }} params 
