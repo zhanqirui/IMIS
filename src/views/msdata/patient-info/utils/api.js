@@ -59,8 +59,8 @@ export const patientDoctorInfoApi = (params) => { // params:doctor_info.id
  */
 export const doctor_view_Api = (username, jsondata) => { 
   const finalparams = {...jsondata, 
-                        source: 'patient_doctor_info_view', 
-                        key_name: 'doctor_id',
+                        source: 'medical_record_doctor_info_view', 
+                        key_name: 'doctorId',
                         username: username};
   const result = request.get(crudRoot.concat("/part_info"), { params: finalparams, appPrefix: true });
   return result;
@@ -75,8 +75,8 @@ export const doctor_view_Api = (username, jsondata) => {
  */
 export const patient_view_Api = (username, jsondata) => { 
   const finalparams = {...jsondata, 
-                        source: 'patient_info', 
-                        key_name: 'patient',
+                        source: 'medical_record_patient_info_view', 
+                        key_name: 'patientId',
                         username: username};
   const result = request.get(crudRoot.concat("/part_info"), { params: finalparams, appPrefix: true });
   return result;
