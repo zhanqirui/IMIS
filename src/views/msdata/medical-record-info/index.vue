@@ -188,7 +188,7 @@ const {
   });
 // #endregion
 
-fetchData()
+  access.hasAccess("msdata:medicalRecordInfo:detail") && fetchData()
 
 // #region 列表字段
 /** @type {TableColumnList} */

@@ -36,13 +36,6 @@ export const detailApi = (params) => {
   return request.get(crudRoot.concat("/detail"), { params, appPrefix: true})
 }
 
-export const medicalRecordPatientInfo = (params) => {
-  return request.get(crudRoot.concat("/medicalRecordPatientInfo"), { params, appPrefix: true})
-}
-export const medicalRecordDoctorInfo = (params) => {
-  return request.get(crudRoot.concat("/medicalRecordDoctorInfo"), { params, appPrefix: true})
-}
-
 /**
  * 
  * @param {String} username
@@ -51,8 +44,8 @@ export const medicalRecordDoctorInfo = (params) => {
  */
 export const doctor_view_Api = (username, jsondata) => { 
   const finalparams = {...jsondata, 
-                        source: 'medical_record_doctor_info_view', 
-                        key_name: 'doctorId',
+                        source: 'patient_doctor_info_view', 
+                        key_name: 'doctor_id',
                         username: username};
   const result = request.get(crudRoot.concat("/part_info"), { params: finalparams, appPrefix: true });
   return result;
@@ -66,14 +59,12 @@ export const doctor_view_Api = (username, jsondata) => {
  */
 export const patient_view_Api = (username, jsondata) => { 
   const finalparams = {...jsondata, 
-                        source: 'medical_record_patient_info_view', 
-                        key_name: 'patientId',
+                        source: 'patient_info', 
+                        key_name: 'patient',
                         username: username};
   const result = request.get(crudRoot.concat("/part_info"), { params: finalparams, appPrefix: true });
   return result;
 }
-
-
 /**
  * 
  * @param {import('./types').IMedicalRecordInfoQueryform & { pageIndex: number, pageSize: number }} params 
