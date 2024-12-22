@@ -1,7 +1,7 @@
 {
   "appName": "IMIS",
   "appCode": "IMIS",
-  "serverUrl": "http://localhost:54801",
+  "serverUrl": "http://10.0.67.99:54801",
   "appInfo": {
     "id": "ce4b589f55544ce689c91b77400dfda1",
     "layout": "1",
