@@ -82,8 +82,6 @@ const { form, reset, submit, closeDialog } = useDialogForm({
   id: toRef(props, "id"),
   formRef,
   default: {
-    // id:"test000000",
-    // idContent:"test000000",
     patientId: "",
     doctorId: "",
     diagnosisCategory: "",
@@ -98,7 +96,7 @@ const { form, reset, submit, closeDialog } = useDialogForm({
   },
   save: model => {
     if (model.id) {
-      return addApi(model);
+      return updateApi(model);
     }
     return addApi(model);
   }

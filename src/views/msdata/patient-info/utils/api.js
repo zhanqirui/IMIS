@@ -76,7 +76,7 @@ export const doctor_view_Api = (username, jsondata) => {
 export const patient_view_Api = (username, jsondata) => { 
   const finalparams = {...jsondata, 
                         source: 'patient_info', 
-                        key_name: 'patient',
+                        key_name: 'patient_id',
                         username: username};
   const result = request.get(crudRoot.concat("/part_info"), { params: finalparams, appPrefix: true });
   return result;
