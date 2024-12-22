@@ -49,6 +49,39 @@ export const patientDetailApi = (params) => {
 export const patientDoctorInfoApi = (params) => { // params:doctor_info.id
   return request.get(crudRoot.concat("/patientDoctorInfoView"), { params, appPrefix: true })
 }
+
+
+/**
+ * 
+ * @param {String} username
+ * @param {Object} jsondata
+ * @returns 
+ */
+export const doctor_view_Api = (username, jsondata) => { 
+  const finalparams = {...jsondata, 
+                        source: 'patient_doctor_info_view', 
+                        key_name: 'doctor_id',
+                        username: username};
+  const result = request.get(crudRoot.concat("/part_info"), { params: finalparams, appPrefix: true });
+  return result;
+}
+
+
+/**
+ * 
+ * @param {String} username
+ * @param {Object} jsondata
+ * @returns 
+ */
+export const patient_view_Api = (username, jsondata) => { 
+  const finalparams = {...jsondata, 
+                        source: 'patient_info', 
+                        key_name: 'patient',
+                        username: username};
+  const result = request.get(crudRoot.concat("/part_info"), { params: finalparams, appPrefix: true });
+  return result;
+}
+
 /**
  * 
  * @param {import('./types').IPatientInfoQueryform & { pageIndex: number, pageSize: number }} params 

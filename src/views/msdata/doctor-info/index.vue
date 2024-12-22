@@ -5,18 +5,18 @@
       <!-- 查询组件 -->
       <KQueryForm>
         
-        <el-form-item label="科室ID">
+        <el-form-item v-if="hasDetailPermission" label="科室ID">
           <el-input v-model="queryForm.departmentId" placeholder="请输入" clearable />
         </el-form-item> 
-        <el-form-item label="姓名">
+        <el-form-item v-if="hasDetailPermission" label="姓名">
           <el-input v-model="queryForm.name" placeholder="请输入" clearable />
         </el-form-item> 
-        <el-form-item label="身份证号">
+        <el-form-item v-if="hasDetailPermission" label="身份证号">
           <el-input v-model="queryForm.idNumber" placeholder="请输入" clearable />
         </el-form-item> 
          </KQueryForm>
       <!-- 查询结果-列表组件 --> <KQueryTable>
-         <el-divider /><KTableBar    :data="[  {    column: '序号',  },]" title="医生信息" :columns="columns" @refresh="fetchData">
+         <KTableBar    :data="[  {    column: '序号',  },]" title="医生信息" :columns="columns" @refresh="fetchData">
           <template #buttons>
             <el-button
               v-access="'msdata:doctorInfo:add'"
@@ -83,16 +83,16 @@
                   删除
                 </el-button>
                 <!-- 新增跳转到主页的按钮 -->
-  <el-button
-    class="!m-0"
-    link
-    type="success"
-    :size="size"
-    :icon="useRenderIcon('Home')"
-    @click="goToHomePage"
-  >
-    主页
-  </el-button>
+                  <el-button
+                    class="!m-0"
+                    link
+                    type="success"
+                    :size="size"
+                    :icon="useRenderIcon('Home')"
+                    @click="goToHomePage"
+                  >
+                    主页
+                  </el-button>
               </template>
             </KTable>
           </template>
@@ -108,6 +108,7 @@
   import { usePageModel } from "@@/plugin-platform/utils/hooks";
   import { getSortChangeStr } from "@@/plugin-platform/utils/tools";
   import { useRouter } from 'vue-router';
+  
 
   defineOptions({ handleEdit, handleView })
 

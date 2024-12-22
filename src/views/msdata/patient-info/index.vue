@@ -2,7 +2,7 @@
   <KQueryList>
     <!-- <KQueryNav></KQueryNav> -->
     
-    <KQueryForm>
+    <KQueryForm >
       
       <el-form-item label="姓名">
         <el-input v-model="queryForm.name" placeholder="请输入" clearable />
@@ -10,10 +10,10 @@
       <el-form-item label="性别">
         <el-input v-model="queryForm.gender" placeholder="请输入" clearable />
       </el-form-item> 
-      <el-form-item label="身份证号">
+      <el-form-item v-if="hasDetailPermission" label="身份证号">
         <el-input v-model="queryForm.idNumber" placeholder="请输入" clearable />
       </el-form-item> 
-     <el-button><el-text>确认</el-text></el-button> </KQueryForm>
+    </KQueryForm>
     
     <KQueryTable>
       <KTableBar title="病患信息" :columns="columns" @refresh="fetchData">
@@ -93,9 +93,10 @@
 <script setup>
 import { useRenderIcon, defineRouteMeta, access, useUserInfo } from "@kesplus/kesplus";
 import { handleEdit, handleView, handleDelete } from "./utils/hook";
-import { deleteApi, pageApi, patientDetailApi,patientDoctorInfoApi} from "./utils/api";
+import { deleteApi, pageApi, doctor_view_Api, patient_view_Api} from "./utils/api";
 import { usePageModel } from "@@/plugin-platform/utils/hooks";
 import { getSortChangeStr } from "@@/plugin-platform/utils/tools";
+// import { useRouter } from 'vue-router';
 
 defineOptions({ handleEdit, handleView })
 
@@ -103,11 +104,25 @@ defineRouteMeta({
   title: "病患信息"
 })
 
+
+  // const router = useRouter();
+  // function navigateTo(where_to_go) {
+  //   router.push({ path: where_to_go });
+  // }
+
 //获得用户信息
 const userInfo = useUserInfo();
 //获得真实姓名heID
-const userRealName = userInfo.value.realName;
 const userRealID = userInfo.value.username;
+
+// 检查用户是否有权限
+const hasDetailPermission = access.hasAccess("msdata:patientInfo:detail");
+const hasPartInfoPermission = access.hasAccess("part_info");
+
+
+// const is_patient = userRealID.startsWith("PAT");
+
+// is_patient && navigateTo("/avatar")
 
 // #region 列表数据
 const {
@@ -131,9 +146,6 @@ const {
     },
     pageSize: 10,
     fetch: async _pager => {
-      // 检查用户是否有权限
-      const hasDetailPermission = access.hasAccess("msdata:patientInfo:detail");
-
       if (hasDetailPermission) {
         // 有权限，调用 pageApi
         const callback = await pageApi({
@@ -142,55 +154,42 @@ const {
           pageSize: _pager.pageSize,
         });
         return { totalElements: callback?.totalElements ?? 0, content: callback?.content || [] };
-      } else {
-        if (userRealID.startsWith("PAT")) {
-  // 如果前三位是 "PAD"，则执行这里的代码
-          const callback = await patientDetailApi({ username: userRealID });
-          const content = callback ? [{
-          id: callback[0].id,
-          name: callback[0].name,
-          gender: callback[0].gender,
-          age: callback[0].age,
-          idNumber: callback[0].id_number,
-          phone: callback[0].phone,
-          emergencyContact: callback[0].emergency_contact,
-          moduleCode: 'MSDATA',
-          deptId: '0000'
-        }] : [];
-        return { totalElements: callback ? 1 : 0, content };
-          } else {
-  // 如果前三位不是 "PAD"，则执行这里的代码
-      const callback = await patientDoctorInfoApi({ username: userRealID });
-      // const content = callback ? [{
-      //     id: callback[0].id,
-      //     name: callback[0].name,
-      //     gender: callback[0].gender,
-      //     age: callback[0].age,
-      //     idNumber: callback[0].id_number,
-      //     phone: callback[0].phone,
-      //     emergencyContact: callback[0].emergency_contact,
-      //     moduleCode: 'MSDATA',
-      //     deptId: '0000'
-      //   }] : [];
-      //   return { totalElements: callback ? 1 : 0, content };
-      const content = callback.map(item => ({
-  id: item.id,
-  name: item.name,
-  gender: item.gender,
-  age: item.age,
-  idNumber: item.id_number,
-  phone: item.phone,
-  emergencyContact: item.emergency_contact,
-  moduleCode: 'MSDATA',
-  deptId: '0000'
-}));
-return { totalElements: callback.length, content };
-}
-        // 没有权限，调用 patientDetailApi
-       
+        //没有查看权限就只可以查看部分信息，所以如果有查看部分信息的权限就调用查看部分信息的接口
+      } 
+      else if(hasPartInfoPermission)
+      {
+        if (userRealID.startsWith("DOC")) {
+          const callback = await doctor_view_Api(userRealID, { ...queryForm});
+          const content = callback.map(item => ({
+            name: item.name,
+            gender: item.gender,
+            age: item.age,
+            idNumber: item.idNumber,
+            phone: item.phone,
+            emergencyContact: item.emergencyContact,
+            moduleCode: 'MSDATA',
+            deptId: '0000'
+          }));
+          return { totalElements: callback.length, content };
+        }
+        else if (userRealID.startsWith("PAT")) {
+          const callback = await patient_view_Api(userRealID, { ...queryForm});
+          const content = callback.map(item => ({
+            name: item.name,
+            gender: item.gender,
+            age: item.age,
+            idNumber: item.idNumber,
+            phone: item.phone,
+            emergencyContact: item.emergencyContact,
+            moduleCode: 'MSDATA',
+            deptId: '0000'
+          }));
+          return { totalElements: callback.length, content };
+        } 
       }
     },
-    hasPermission: () => access.hasAccess("msdata:patientInfo:detail")
+    hasPermission: () => access.hasAccess("msdata:patientInfo:detail") | access.hasAccess("part_info")
+    
   });
 // #endregion
 
