@@ -2,7 +2,7 @@
     <KQueryList>
       <!-- <KQueryNav></KQueryNav> -->
       
-      <KQueryForm>
+      <KQueryForm      >
         
         <el-form-item label="医院名称">
           <el-input v-model="queryForm.hospitalName" placeholder="请输入" clearable />
@@ -114,7 +114,7 @@
   } = usePageModel({
       queryForm: {
         orderColumns: "",
-                        hospitalName:"",
+        hospitalName:"",
                     },
       pageSize: 10,
       fetch: async _pager => {

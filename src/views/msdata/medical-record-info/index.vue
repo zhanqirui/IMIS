@@ -130,7 +130,7 @@ const userRealID = userInfo.value.username;
   } = usePageModel({
       queryForm: {
         orderColumns: "",
-                        patientId:"",
+                  patientId:"",
                   doctorId:"",
                   diagnosisCategory:"",
                   visitDate:"",
@@ -151,39 +151,39 @@ const userRealID = userInfo.value.username;
         else
         {
           if (userRealID.startsWith("PAT"))
-        {
-          const callback = await medicalRecordPatientInfoApi({ username: userRealID });
-          const content = callback.map(item => ({
-  id: item.id,
-  patientId: item.patient_id,
-  doctorId: item.doctor_id,
-  diagnosisCategory: item.diagnosis_category,
-  visitDate: item.visit_date,
-  departmentId: item.department_id,
- selfReportedPastMedicalHistory: item.self_reported_past_medical_history,
- patientCondition: item.patient_condition,
-  moduleCode: 'MSDATA',
-  deptId: '0000'
-}));
-return { totalElements: callback.length, content };
-        }
-        else
-        {
-          const callback = await medicalRecordDoctorInfoApi({ username: userRealID });
-          const content = callback.map(item => ({
+          {
+            const callback = await medicalRecordPatientInfoApi({ username: userRealID });
+            const content = callback.map(item => ({
             id: item.id,
-  patientId: item.patient_id,
-  doctorId: item.doctor_id,
-  diagnosisCategory: item.diagnosis_category,
-  visitDate: item.visit_date,
-  departmentId: item.department_id,
- selfReportedPastMedicalHistory: item.self_reported_past_medical_history,
- patientCondition: item.patient_condition,
-  moduleCode: 'MSDATA',
-  deptId: '0000'
-}));
-return { totalElements: callback.length, content };
-        }
+            patientId: item.patient_id,
+            doctorId: item.doctor_id,
+            diagnosisCategory: item.diagnosis_category,
+            visitDate: item.visit_date,
+            departmentId: item.department_id,
+            selfReportedPastMedicalHistory: item.self_reported_past_medical_history,
+            patientCondition: item.patient_condition,
+            moduleCode: 'MSDATA',
+            deptId: '0000'
+            }));
+            return { totalElements: callback.length, content };
+          }
+          else
+          {
+            const callback = await medicalRecordDoctorInfoApi({ username: userRealID });
+            const content = callback.map(item => ({
+              id: item.id,
+              patientId: item.patient_id,
+              doctorId: item.doctor_id,
+              diagnosisCategory: item.diagnosis_category,
+              visitDate: item.visit_date,
+              departmentId: item.department_id,
+              selfReportedPastMedicalHistory: item.self_reported_past_medical_history,
+              patientCondition: item.patient_condition,
+              moduleCode: 'MSDATA',
+              deptId: '0000'
+              }));
+            return { totalElements: callback.length, content };
+          }
         }
        
         
