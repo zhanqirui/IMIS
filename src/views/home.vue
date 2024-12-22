@@ -1,47 +1,72 @@
 <template>
   <div  class="background">
-
-      
+    
   <KCol>
+    <KCell><KCell><div class="background_style1" style="height: 100px; width: 100%;text-align: center;display: flex; justify-content: center; align-items: center; color: white;">
+  地址：北京市海淀区中关村南大街22号 邮编：100081 总机：010-62179977 预约咨询：010-62179665/ 82195390
+</div></KCell></KCell>
     <KCell>
-    <el-carousel style="width:100%; height:500px; overflow:hidden;" :autoplay="false" @change="handleCarouselChange">
-      <el-carousel-item style="width:100%; height:500px; overflow:hidden;">
-        <div style="display:flex; justify-content:center; align-items:center; width:100%; height:100%; overflow:hidden;">
-      <img src="/pictures/5rr0tedn.png" alt="描述文字1" style=" object-fit:cover;">
-    </div>
-      </el-carousel-item>
-      <el-carousel-item style="width:100%; height:500px; overflow:hidden;">
-        <div style="display:flex; justify-content:center; align-items:center; width:100%; height:100%; overflow:hidden;">
-      <img src="/pictures/neuy55er.png" alt="描述文字1" style=" object-fit:cover;">
-    </div>
-      </el-carousel-item>
-      <el-carousel-item style="width:100%; height:500px; overflow:hidden;">
-        <div style="display:flex; justify-content:center; align-items:center; width:100%; height:100%; overflow:hidden;">
-      <img src="/pictures/hospital3.png" alt="描述文字1" style=" object-fit:cover;">
-    </div>
-      </el-carousel-item>
-    </el-carousel>
-        </KCell>
 
-    <KCell><el-space wrap></el-space></KCell>
-    
-                
-  <KRow>
-   
-                  <KCell ><el-calendar  style="width:600px;height:500px;background-color: rgba(255, 255, 255, 0.5);margin-left: 0px;"/>
-      </KCell>
-                
+              <KCol>
+                <KRow>
+                  <KCell>
+                    <KCell><div style="height: 100px; width: 100%;text-align: center;display: flex; justify-content: center; align-items: center; color: white;">
 
-    
-
-    <KCell class="background">
-        <KCell><el-card header="我是卡片" style="width:600px;height:500px;weight:500px;background-color: rgba(255, 255, 255, 0.5);margin-left: 0px;"/></KCell></KCell>
-        <KCell >
-    
-              
+</div></KCell>
+    <el-popover
+        placement="top-start"
+        title="Title"
+        :width="200"
+        trigger="hover"
+        content="this is content, this is content, this is content"
+      >
         
+      </el-popover>
+        <el-calendar /></KCell>
+        
+  <KCell>
+    <KCell><div style="height: 100px; width: 100%;text-align: center;display: flex; justify-content: center; align-items: center; color: white;">
+
+</div></KCell>
+    <el-timeline>
+      <el-timeline-item timestamp="2023-10-1">
+      <el-card>
+        <h4>标题1</h4>
+        <p>这里是一些描述信息。</p>
+      </el-card>
+    </el-timeline-item>
+    <el-timeline-item timestamp="2023-11-15">
+      <el-card>
+        <h4>标题2</h4>
+        <p>这里是一些描述信息。</p>
+        <el-button type="primary">操作按钮</el-button>
+      </el-card>
+    </el-timeline-item>
+    <el-timeline-item timestamp="2023-12-20">
+      <el-card>
+        <h4>标题3</h4>
+        <p>这里是一些描述信息。</p>
+        <el-image src="/pictures/Canva Middle School (2).png" alt="示例图片"></el-image>
+      </el-card>
+    </el-timeline-item>
+    </el-timeline>
+    </KCell>
+  
+
+</KRow>
+                
+              </KCol>
+    </KCell>
+    <KCell>
+      <KCell><div class="background_style1" style="height: 100px; width: 100%;text-align: center;display: flex; justify-content: center; align-items: center; color: white;">
+  地址：北京市海淀区中关村南大街22号 邮编：100081 总机：010-62179977 预约咨询：010-62179665/ 82195390
+</div></KCell>
+</KCell>
+  </KCol>
+      <div>
     
-   </KCell></KRow></KCol>
+    
+  </div>  
       </div>
 </template>
 <script setup>
@@ -88,6 +113,8 @@ import { defineRouteMeta, KDashboard } from "@kesplus/kesplus";
 <style scoped>
 .background {
   background-color: #d0d3df;
-
+  .text-center {
+  text-align: center;
+}
 }
 </style>

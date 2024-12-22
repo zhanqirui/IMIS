@@ -46,6 +46,10 @@ export const doctorMedicalRecordsApi = (params) => { // params:doctor_info.id
   return request.get(crudRoot.concat("/doctorMedicalRecordsView"), { params, appPrefix: true })
 }
 
+export const modelDecisionApi = (params) => { // params:doctor_info.id
+  return request.get(crudRoot.concat("/modelDecision"), { params, appPrefix: true })
+}
+
 /**
  * 
  * @param {import('./types').IDoctorInfoQueryform & { pageIndex: number, pageSize: number }} params 
