@@ -4,10 +4,10 @@
     
     <KQueryForm >
       
-      <el-form-item label="姓名">
+      <el-form-item v-if="hasNotPatientBasicViewPermission" label="姓名">
         <el-input v-model="queryForm.name" placeholder="请输入" clearable />
       </el-form-item> 
-      <el-form-item label="性别">
+      <el-form-item v-if="hasNotPatientBasicViewPermission" label="性别">
         <el-input v-model="queryForm.gender" placeholder="请输入" clearable />
       </el-form-item> 
       <el-form-item v-if="hasDetailPermission" label="身份证号">
@@ -118,6 +118,7 @@ const userRealID = userInfo.value.username;
 // 检查用户是否有权限
 const hasDetailPermission = access.hasAccess("msdata:patientInfo:detail");
 const hasPartInfoPermission = access.hasAccess("part_info");
+const hasNotPatientBasicViewPermission = ! access.hasAccess("patient_basic_view");
 
 
 // const is_patient = userRealID.startsWith("PAT");
@@ -188,7 +189,7 @@ const {
         } 
       }
     },
-    hasPermission: () => access.hasAccess("msdata:patientInfo:detail") | access.hasAccess("part_info")
+    hasPermission: () => (hasDetailPermission | hasPartInfoPermission) && hasNotPatientBasicViewPermission
     
   });
 // #endregion

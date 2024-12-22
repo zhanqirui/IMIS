@@ -4,10 +4,10 @@
     
     <KQueryForm>
       
-      <el-form-item label="病人ID">
+      <el-form-item v-if="isNotPatient" label="病人ID">
         <el-input v-model="queryForm.patientId" placeholder="请输入" clearable />
       </el-form-item> 
-      <el-form-item label="医生ID">
+      <el-form-item v-if="isNotDoctor" label="医生ID">
         <el-input v-model="queryForm.doctorId" placeholder="请输入" clearable />
       </el-form-item> 
       <el-form-item label="诊断类别">
@@ -109,13 +109,17 @@ defineOptions({ handleEdit, handleView })
 defineRouteMeta({
   title: "病历信息"
 })
-  const hasDetailPermission = access.hasAccess("msdata:medicalRecordInfo:detail");
-  const hasPartInfoPermission = access.hasAccess("part_record_info");
 
 const userInfo = useUserInfo();
 //获得真实姓名heID
 // const userRealName = userInfo.value.realName;
 const userRealID = userInfo.value.username;
+
+const isNotPatient = ! userRealID.startsWith("PAT");
+const isNotDoctor  = ! userRealID.startsWith("DOC");
+const hasDetailPermission = access.hasAccess("msdata:medicalRecordInfo:detail");
+const hasPartInfoPermission = access.hasAccess("part_record_info");
+
 // #region 列表数据
 const {
   queryForm,
@@ -161,6 +165,8 @@ const {
               diagnosisCategory: item.diagnosisCategory,
               visitDate: item.visitDate,
               departmentId: item.departmentId,
+              selfReportedPastMedicalHistory: item.selfReportedPastMedicalHistory,
+              patientCondition: item.patientCondition,
               moduleCode: 'MSDATA',
               deptId: '0000'
             }));
@@ -174,6 +180,8 @@ const {
               diagnosisCategory: item.diagnosisCategory,
               visitDate: item.visitDate,
               departmentId: item.departmentId,
+              selfReportedPastMedicalHistory: item.selfReportedPastMedicalHistory,
+              patientCondition: item.patientCondition,
               moduleCode: 'MSDATA',
               deptId: '0000'
             }));
@@ -188,7 +196,7 @@ const {
   });
 // #endregion
 
-  access.hasAccess("msdata:medicalRecordInfo:detail") && fetchData()
+fetchData()
 
 // #region 列表字段
 /** @type {TableColumnList} */

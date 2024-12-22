@@ -40,8 +40,6 @@ export const detailApi = (params) => {
  * @param {import('./types').IHospitalInfoQueryform & { pageIndex: number, pageSize: number }} params 
  * @returns 
  */
-
-
 export const pageApi = (params) => {
   return request.get(crudRoot.concat("/page"), { params, appPrefix: true })
 }

@@ -2,14 +2,12 @@
     <KQueryList>
       <!-- <KQueryNav></KQueryNav> -->
       
-      <KQueryForm      >
+      <KQueryForm>
         
         <el-form-item label="医院名称">
           <el-input v-model="queryForm.hospitalName" placeholder="请输入" clearable />
         </el-form-item> 
-      
-    
-        </KQueryForm>
+      </KQueryForm>
       
       <KQueryTable>
         <KTableBar title="医院信息" :columns="columns" @refresh="fetchData">
@@ -107,14 +105,14 @@
     pagination,
     handlePageSizeChange,
     handleCurrentPageChange,
-    fetchData,//you can use this function to fetch data from server
+    fetchData,
     selectedRows,
     handleSelectionChange,
     handelSortChange,
   } = usePageModel({
       queryForm: {
         orderColumns: "",
-        hospitalName:"",
+                        hospitalName:"",
                     },
       pageSize: 10,
       fetch: async _pager => {
