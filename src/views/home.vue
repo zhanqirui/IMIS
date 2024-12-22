@@ -2,20 +2,17 @@
   <div  class="background">
     
   <KCol>
-    <KCell></KCell>
+    <KCell><KCell><div class="background_style1" style="height: 100px; width: 100%;text-align: center;display: flex; justify-content: center; align-items: center; color: white;">
+  地址：北京市海淀区中关村南大街22号 邮编：100081 总机：010-62179977 预约咨询：010-62179665/ 82195390
+</div></KCell></KCell>
     <KCell>
-<KRow>
-  <KCell>
-    <el-timeline>
-        <el-timeline-item timestamp="2023-10-1">
-            <el-text>内容</el-text>
-        </el-timeline-item>
-    </el-timeline>
-    </KCell>
-  <KCell><el-card header="我是卡片">
-        <KText>文字文字</KText>
-            </el-card></KCell>
-  <KCell>
+
+              <KCol>
+                <KRow>
+                  <KCell>
+                    <KCell><div style="height: 100px; width: 100%;text-align: center;display: flex; justify-content: center; align-items: center; color: white;">
+
+</div></KCell>
     <el-popover
         placement="top-start"
         title="Title"
@@ -23,42 +20,47 @@
         trigger="hover"
         content="this is content, this is content, this is content"
       >
-        <template #reference>
-          <el-button class="m-2">Hover to activate</el-button>
-        </template>
+        
       </el-popover>
         <el-calendar /></KCell>
+        
+  <KCell>
+    <KCell><div style="height: 100px; width: 100%;text-align: center;display: flex; justify-content: center; align-items: center; color: white;">
+
+</div></KCell>
+    <el-timeline>
+      <el-timeline-item timestamp="2023-10-1">
+      <el-card>
+        <h4>标题1</h4>
+        <p>这里是一些描述信息。</p>
+      </el-card>
+    </el-timeline-item>
+    <el-timeline-item timestamp="2023-11-15">
+      <el-card>
+        <h4>标题2</h4>
+        <p>这里是一些描述信息。</p>
+        <el-button type="primary">操作按钮</el-button>
+      </el-card>
+    </el-timeline-item>
+    <el-timeline-item timestamp="2023-12-20">
+      <el-card>
+        <h4>标题3</h4>
+        <p>这里是一些描述信息。</p>
+        <el-image src="/pictures/Canva Middle School (2).png" alt="示例图片"></el-image>
+      </el-card>
+    </el-timeline-item>
+    </el-timeline>
+    </KCell>
+  
+
 </KRow>
+                
+              </KCol>
     </KCell>
     <KCell>
-        <el-space wrap></el-space><KP>
-        <KText class="text-center">关于我们
-招贤纳士
-商务合作
-寻求报道
-
-400-660-0108
-
-kefu@csdn.net
-
-在线客服
-工作时间 8:30-22:00<br>
-公安备案号11010502030143
-京ICP备19004658号
-京网文〔2020〕1039-165号
-经营性网站备案信息
-北京互联网违法和不良信息举报中心<br>
-家长监护
-网络110报警服务
-中国互联网举报中心
-Chrome商店下载
-账号管理规范
-版权与免责声明
-版权申诉
-出版物许可证
-营业执照<br>
-©1999-2024北京创新乐知网络技术有限公司</KText>
-            </KP>
+      <KCell><div class="background_style1" style="height: 100px; width: 100%;text-align: center;display: flex; justify-content: center; align-items: center; color: white;">
+  地址：北京市海淀区中关村南大街22号 邮编：100081 总机：010-62179977 预约咨询：010-62179665/ 82195390
+</div></KCell>
 </KCell>
   </KCol>
       <div>
