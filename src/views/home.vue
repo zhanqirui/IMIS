@@ -39,7 +39,7 @@
       <el-card>
         <h4>标题2</h4>
         <p>这里是一些描述信息。</p>
-        <el-button type="primary">操作按钮</el-button>
+        <el-button   @click="navigateTo" type="primary">操作按钮</el-button>
       </el-card>
     </el-timeline-item>
     <el-timeline-item timestamp="2023-12-20">
@@ -72,6 +72,12 @@
 <script setup>
 import { defineRouteMeta, KDashboard } from "@kesplus/kesplus";
 
+
+import { useRouter, useRoute } from "@@/core/coreExports";
+const router = useRouter();
+function navigateTo() {
+  router.push({ path: "/patient_view" });
+}
 </script>
 
 <style>
