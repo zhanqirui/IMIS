@@ -19,14 +19,7 @@
 </KRow>
     <k-form-input    class="width：500"  :autosize="true"  type="textarea"   :rows="20" style="width: 100%; height: 300px;"/>
         
-       </el-form-item>
-   
-       
-
-
-        
-        
-            
+       </el-form-item> 
       </KCell><el-button     type="flex" justify="end" style="width: 120px; height: 40px;"><el-text>确认</el-text></el-button>
       </KRow>
     </el-form>
