@@ -68,11 +68,11 @@
         <p>全力开发中……</p>
         <el-image style = "height: 300px" src="/pictures/work.jpg" alt="示例图片"></el-image>
       </el-card>
-    </el-timeline-item>\
+    </el-timeline-item>
     <el-timeline-item timestamp="2024-12">
       <el-card style="width:700px;">
-        <h4></h4>
-        <p>全力开发中……</p>
+        <h4>Done!</h4>
+        <p>呵，长大了！<br>经过将近两个月的设计开发工作, IMIS终于完成了!git的版本记录中,存放了我们124次提交记录,累计修改约20000行代码,实现了医院信息系统的基本功能。从11月中旬到12月下旬,我们终于完成了本项目的开发,并且对基本功能完成了测试。<br>完结撒花!</p>
       </el-card>
     </el-timeline-item>
     </el-timeline><div style="height: 100px; width: 100%;text-align: center;display: flex; justify-content: center; align-items: center; color: white;">
