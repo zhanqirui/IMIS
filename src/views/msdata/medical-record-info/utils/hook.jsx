@@ -7,6 +7,7 @@ import {
 } from "@@/plugin-platform/components/dialog/hook";
 import FormComponent from "../form.vue";
 import { useSelect } from "@@/plugin-platform/utils/hooks";
+import { useRouter } from 'vue-router';
 
 /**
  * 
@@ -36,6 +37,15 @@ export function handleEdit(editOptions) {
           await editRef.value.submit();
           ElMessage.success("保存成功");
           closeDialog(dialog);
+        }
+      },
+      {
+        label: "保存1",
+        type: "primary",
+        btnClick: async () => {
+          await closeDialog(dialog);
+          const router = useRouter();
+          router.push('/home');
         }
       }
     ],

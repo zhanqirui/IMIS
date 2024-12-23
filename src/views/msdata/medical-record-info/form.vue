@@ -53,7 +53,24 @@
                   <el-input v-model="form.patientCondition" placeholder="请输入患者情况" clearable/>
                 </el-form-item>
               </KCell>
-                      
+              <div>
+
+    
+  </div>
+  <KCol>
+    <KCell>
+<KRow>
+  <KCell></KCell>
+  <KCell><ElButton   type="primary" @click="goToHome">跳转到首页</ElButton></KCell>
+  <KCell></KCell>
+</KRow>
+    </KCell>
+    <!-- <KCell><el-card   header="大模型辅助诊断信息"><div>
+      {{ displayText }}
+    </div></el-card></KCell> -->
+    <KCell></KCell>
+  </KCol>
+      
             </KCol>
           </KBlock>
         </KSection>
@@ -62,6 +79,8 @@
   </KDialogForm>
 </template>
 
+
+
 <script setup>
 import { ref, toRef } from "vue";
 import { useSelect, useDialogForm } from "@@/plugin-platform/utils/hooks";
@@ -69,6 +88,8 @@ import { required } from "@@/plugin-platform/utils/validators";
 import { addApi, updateApi, detailApi } from './utils/api'
 
 defineOptions({ inheritAttrs: false })
+
+
 
 const props = defineProps({
   id: { type: String },
@@ -103,4 +124,15 @@ const { form, reset, submit, closeDialog } = useDialogForm({
 });
 
 defineExpose({ submit, reset, closeDialog });
+</script>
+
+<script>
+export default {      
+  methods: {
+    goToHome() {
+      this.$router.push('/to_treatment_view');
+  
+    }
+  }
+};
 </script>

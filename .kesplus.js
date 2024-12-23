@@ -24,6 +24,14 @@ const buildConfig = {
         meta: {
           title: 'Patient Page',
           anonymous: true
+        }
+      },
+      {
+        path: '/to_treatment_view',
+        component: () => import('@/views/msdata/medical-record-info/treatment.vue'),
+        meta: {
+          title: 'Treatment Page',
+          anonymous: true
         },
       },
     ],
