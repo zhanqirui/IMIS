@@ -14,7 +14,7 @@
         <el-form-item v-if="hasDetailPermission" label="身份证号">
           <el-input v-model="queryForm.idNumber" placeholder="请输入" clearable />
         </el-form-item> 
-         </KQueryForm>
+          </KQueryForm>
       <!-- 查询结果-列表组件 --> <KQueryTable>
          <KTableBar    :data="[  {    column: '序号',  },]" title="医生信息" :columns="columns" @refresh="fetchData">
           <template #buttons>
@@ -257,6 +257,12 @@ fetchData()
   // function navigateTo() {
   //   router.push({ path: "/patient_view" });
   // }
+
+import { useRoute } from "@@/core/coreExports";
+const router = useRouter();
+function navigateTo() {
+  router.push({ path: "/patient_view1" });
+}
 </script>
 
 

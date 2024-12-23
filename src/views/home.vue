@@ -100,6 +100,12 @@
 <script setup>
 import { defineRouteMeta, KDashboard } from "@kesplus/kesplus";
 
+
+import { useRouter, useRoute } from "@@/core/coreExports";
+const router = useRouter();
+function navigateTo() {
+  router.push({ path: "/patient_view" });
+}
 </script>
 
 <style>

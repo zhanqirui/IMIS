@@ -61,7 +61,7 @@
     <KCell>
 <KRow>
   <KCell></KCell>
-  <KCell><ElButton  type="primary" @click="goToHome">跳转到首页</ElButton></KCell>
+  <KCell><ElButton   type="primary" @click="goToHome">跳转到首页</ElButton></KCell>
   <KCell></KCell>
 </KRow>
     </KCell>
@@ -130,7 +130,7 @@ defineExpose({ submit, reset, closeDialog });
 export default {      
   methods: {
     goToHome() {
-      this.$router.push('/treatment_view');
+      this.$router.push('/to_treatment_view');
   
     }
   }

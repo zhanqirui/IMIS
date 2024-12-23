@@ -11,11 +11,27 @@ const buildConfig = {
   router: {
     routes : [
       {
-        path: '/treatment_view',
-        component: () => import('@/views/treatment_view/index.vue'),
+        path: '/msdata/doctor-info/jump',
+        component: () => import('@/views/msdata/doctor-info/j.vue'),
         meta: {
           title: 'Patient Page',
-          anoymous: true
+          anonymous: true
+        },
+      },
+      {
+        path: '/patient_view1',
+        component: () => import('@/views/patient_view/index.vue'),
+        meta: {
+          title: 'Patient Page',
+          anonymous: true
+        }
+      },
+      {
+        path: '/to_treatment_view',
+        component: () => import('@/views/msdata/medical-record-info/treatment.vue'),
+        meta: {
+          title: 'Treatment Page',
+          anonymous: true
         },
       },
     ],
@@ -23,7 +39,7 @@ const buildConfig = {
   },
   access: {
     roles: {
-      admin: ["*", '/patient_view']
+      admin: ["*"]
     },
   },
 };
