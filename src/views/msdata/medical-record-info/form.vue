@@ -9,7 +9,7 @@
 
               <KCell>
                 
-              <el-form-item label="ID" prop="idContent" :rules="[]" data-grid-span="1">
+              <el-form-item label="ID" prop="id" :rules="[]" data-grid-span="1">
                   <el-input v-model="form.id" placeholder="请输入ID"  clearable/>
                 </el-form-item></KCell>
               <KCell>
@@ -103,8 +103,6 @@ const { form, reset, submit, closeDialog } = useDialogForm({
   id: toRef(props, "id"),
   formRef,
   default: {
-    // id:"test000000",
-    // idContent:"test000000",
     patientId: "",
     doctorId: "",
     diagnosisCategory: "",

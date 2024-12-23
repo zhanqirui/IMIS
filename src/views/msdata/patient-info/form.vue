@@ -7,7 +7,8 @@
           <KBlock :no-padding="true">
             <KCol>
               <KCell>
-                <el-form-item label="账号" prop="idContent" :rules="[]" data-grid-span="1">
+                <!-- 新增ID -->
+                <el-form-item label="账号" prop="id" :rules="[]" data-grid-span="1">
                   <el-input v-model="form.id" placeholder="请输入账号" clearable/>
                 </el-form-item>
               </KCell>
@@ -76,7 +77,6 @@ const { form, reset, submit, closeDialog } = useDialogForm({
   id: toRef(props, "id"),
   formRef,
   default: {
-    idContent:"",
     name: "",
     gender: "",
     age: "",
@@ -88,6 +88,7 @@ const { form, reset, submit, closeDialog } = useDialogForm({
   fetchById: id => {
     return detailApi({id});
   },
+  // ! 这里修改了后端的API，所以需要修改这里的save方法,我们在输入框中引入了id，所以这里的model.id就不再是空的了，所以要把原来的update改成add
   save: model => {
     if (model.id) {
       return addApi(model);
