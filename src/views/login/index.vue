@@ -18,17 +18,23 @@
   <KCol>
     <KCell></KCell>
     <KCell><div class="background_style1" style="height: 100px; width: 100%;text-align: center;display: flex; justify-content: center; align-items: center; color: white;">
-  地址：北京市海淀区中关村南大街22号 邮编：100081 总机：010-62179977 预约咨询：010-62179665/ 82195390
+  欢迎您来到IMIS系统
 </div></KCell>
     <KCell><div class="background_style" style="height: 250px; width: 100%;"></div></KCell>
     <KCell><KRow class="background_style">
   <KCell>
-    <el-carousel style="width:100%;" :autoplay="false">
-      <el-carousel-item ><img src="/pictures/login_pic_1.png" alt="示例图片" style="width:1500px;height:650px;">
-        
+    <el-carousel style="width:100%;" :autoplay="true">
+      <el-carousel-item >
+        <img src="/pictures/login_pic_1.png" alt="示例图片" style="width:1920px;height:650px;">
       </el-carousel-item>
       <el-carousel-item >
-        <el-empty />
+        <img src="/pictures/cm2.png" alt="示例图片" style="width:1500px;height:300px;">
+      </el-carousel-item>
+      <el-carousel-item >
+        <img src="/pictures/R-C.png" alt="示例图片" style="width:1500px;height:300px;">
+      </el-carousel-item>
+      <el-carousel-item >
+        <img src="/pictures/rc2.png" alt="示例图片" style="width:1500px;height:300px;">
       </el-carousel-item>
     </el-carousel>
         </KCell>
@@ -69,8 +75,8 @@
   
 </KRow></KCell>
 <KCell><div class="background_style" style="height: 350px; width: 100%;"></div></KCell>
-<KCell><div class="background_style1" style="height: 100px; width: 100%;text-align: center;display: flex; justify-content: center; align-items: center; color: white;">
-  地址：北京市海淀区中关村南大街22号 邮编：100081 总机：010-62179977 预约咨询：010-62179665/ 82195390
+<KCell><div class="background_style1" style="position: fixed; bottom: 0; left: 0; width: 100%; height: 100px; text-align: center; display: flex; justify-content: center; align-items: center; color: white;">
+  地址：陕西省西安市长安区西北工业大学计算机学院 邮编：xxxxxx <br>本项目使用素材均来源于网络，如有侵权请联系本人删除
 </div></KCell>
   </KCol>
       

@@ -3,14 +3,14 @@
     
   <KCol>
     <KCell><KCell><div class="background_style1" style="height: 100px; width: 100%;text-align: center;display: flex; justify-content: center; align-items: center; color: white;">
-  地址：北京市海淀区中关村南大街22号 邮编：100081 总机：010-62179977 预约咨询：010-62179665/ 82195390
+  欢迎您来到IMIS系统！
 </div></KCell></KCell>
     <KCell>
 
               <KCol>
                 <KRow>
                   <KCell>
-                    <KCell><div style="height: 100px; width: 100%;text-align: center;display: flex; justify-content: center; align-items: center; color: white;">
+                    <KCell><div style="height: 20px; width: 100%;text-align: center;display: flex; justify-content: center; align-items: center; color: white;">
 
 </div></KCell>
     <el-popover
@@ -23,33 +23,61 @@
         
       </el-popover>
         <el-calendar /></KCell>
+        <KCell style="height: 100%; width: 100px;text-align: center;display: flex; justify-content: center; align-items: center; color: white;"></KCell>
         
   <KCell>
     <KCell><div style="height: 100px; width: 100%;text-align: center;display: flex; justify-content: center; align-items: center; color: white;">
 
 </div></KCell>
     <el-timeline>
-      <el-timeline-item timestamp="2023-10-1">
-      <el-card>
-        <h4>标题1</h4>
-        <p>这里是一些描述信息。</p>
+      <el-timeline-item timestamp="2024-11-20">
+      <el-card style="width:700px;">
+        <h4>项目启动</h4>
+        <p>小组正式成立，新建文件夹完毕。商讨大作业题目为结合大模型诊疗的医院信息系统。</p>
       </el-card>
     </el-timeline-item>
-    <el-timeline-item timestamp="2023-11-15">
-      <el-card>
-        <h4>标题2</h4>
-        <p>这里是一些描述信息。</p>
+    <el-timeline-item timestamp="2024-11-25">
+      <el-card style="width:700px;">
+        <h4>概念设计</h4>
+        <p>通过共同商讨后，确定了大概的系统架构，并开始进行概念设计。完成了数据流图和功能描述。小组成员为了更好地做出系统，和在医院任职的家人沟通，以求做出效果更好的设计。</p>
         <el-button type="primary">操作按钮</el-button>
       </el-card>
     </el-timeline-item>
-    <el-timeline-item timestamp="2023-12-20">
-      <el-card>
-        <h4>标题3</h4>
-        <p>这里是一些描述信息。</p>
+    <el-timeline-item timestamp="2024-11-28">
+      <el-card style="width:700px;">
+        <h4>提交初步报告</h4>
+        <p>小组成员完成初步的进度进展报告并提交。</p>
+      </el-card>
+    </el-timeline-item>
+    <el-timeline-item timestamp="2024-12-10">
+      <el-card style="width:700px;">
+        <h4>logo与名称</h4>
+        <p>我们将我们的数据库系统命名为：integrative medical intelligence system，简称为IMIS。我们希望我们的系统将“综合”，“”智能””医疗”“信息”“系统”融合在一起。同时我们设计了一个logo。</p>
         <el-image src="/pictures/Canva Middle School (2).png" alt="示例图片"></el-image>
       </el-card>
     </el-timeline-item>
-    </el-timeline>
+    <el-timeline-item timestamp="2024-12-12">
+      <el-card style="width:700px;">
+        <h4>正式启动</h4>
+        <p>项目正式启动，我们选择国产数据库系统金仓进行开发。小组成员部署了kesplus框架。创建github仓库进行协作开发。</p>
+      </el-card>
+    </el-timeline-item>
+    <el-timeline-item timestamp="2024-12">
+      <el-card style="width:700px;">
+        <h4>开发过程</h4>
+        <p>全力开发中……</p>
+        <el-image style = "height: 300px" src="/pictures/work.jpg" alt="示例图片"></el-image>
+      </el-card>
+    </el-timeline-item>\
+    <el-timeline-item timestamp="2024-12">
+      <el-card style="width:700px;">
+        <h4></h4>
+        <p>全力开发中……</p>
+      </el-card>
+    </el-timeline-item>
+    </el-timeline><div style="height: 100px; width: 100%;text-align: center;display: flex; justify-content: center; align-items: center; color: white;">
+
+</div>
     </KCell>
   
 
@@ -58,8 +86,8 @@
               </KCol>
     </KCell>
     <KCell>
-      <KCell><div class="background_style1" style="height: 100px; width: 100%;text-align: center;display: flex; justify-content: center; align-items: center; color: white;">
-  地址：北京市海淀区中关村南大街22号 邮编：100081 总机：010-62179977 预约咨询：010-62179665/ 82195390
+      <KCell><div class="background_style1" style="position: fixed; bottom: 0; left: 0; width: 100%; height: 100px; text-align: center; display: flex; justify-content: center; align-items: center; color: white;">
+  地址：陕西省西安市长安区西北工业大学计算机学院 邮编：xxxxxx <br>本项目使用素材均来源于网络，如有侵权请联系本人删除
 </div></KCell>
 </KCell>
   </KCol>

@@ -9,16 +9,16 @@ const buildConfig = {
   },
   title: "kesplus",
   router: {
-    // routes : [
-    //   {
-    //     path: '/patient_view',
-    //     component: () => import('@/views/patient_view/index.vue'),
-    //     meta: {
-    //       title: 'Patient Page',
-    //       access: '/patient_view', 
-    //     },
-    //   },
-    // ],
+    routes : [
+      {
+        path: '/treatment_view',
+        component: () => import('@/views/treatment_view/index.vue'),
+        meta: {
+          title: 'Patient Page',
+          anoymous: true
+        },
+      },
+    ],
     mode: "history",
   },
   access: {
