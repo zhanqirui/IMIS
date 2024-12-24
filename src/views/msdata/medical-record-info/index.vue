@@ -24,7 +24,7 @@
     <KQueryTable>
       <KTableBar title="病历信息" :columns="columns" @refresh="fetchData">
         <template #buttons>
-          <el-button
+          <el-button 
             v-access="'msdata:medicalRecordInfo:add'"
             type="primary"
             :icon="useRenderIcon('Plus')"

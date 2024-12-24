@@ -162,7 +162,7 @@
           age: callback[0].age,
           idNumber: callback[0].id_number,
           phone: callback[0].phone,
-          departmentId: callback[0].departmentId,
+          departmentId: callback[0].department_id,
           moduleCode: 'MSDATA',
           deptId: '0000'
         }] : [];

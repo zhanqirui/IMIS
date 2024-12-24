@@ -7,14 +7,13 @@ import {
 } from "@@/plugin-platform/components/dialog/hook";
 import FormComponent from "../form.vue";
 import { useSelect } from "@@/plugin-platform/utils/hooks";
-import { useRouter } from 'vue-router';
 
 /**
  * 
  * @param {Object} editOptions 
  * @param {String} editOptions.title 
  * @param {String} [editOptions.id] 
- * @param {import('./types').IMedicalRecordInfo} [editOptions.row]
+ * @param {import('./types').IDiagnosisFinalInfo} [editOptions.row]
  * @param {()=>void} [editOptions.effect] 
  */
 export function handleEdit(editOptions) {
@@ -36,18 +35,9 @@ export function handleEdit(editOptions) {
         btnClick: async () => {
           await editRef.value.submit();
           ElMessage.success("保存成功");
-          // closeDialog(dialog);
+          closeDialog(dialog);
         }
-      },
-      // {
-      //   label: "保存1",
-      //   type: "primary",
-      //   btnClick: async () => {
-      //     await closeDialog(dialog);
-      //     const router = useRouter();
-      //     router.push('/home');
-      //   }
-      // }
+      }
     ],
     contentRenderer: () => <FormComponent ref={editRef} />,
   });
@@ -77,7 +67,7 @@ export async function handleDelete(
  * @param {Object} editOptions 
  * @param {String} editOptions.title 
  * @param {String} [editOptions.id] 
- * @param {import('./types').IMedicalRecordInfo} [editOptions.row]
+ * @param {import('./types').IDiagnosisFinalInfo} [editOptions.row]
  * @param {()=>void} [editOptions.effect] 
  */
 export function handleView(editOptions) {
@@ -91,7 +81,7 @@ export function handleView(editOptions) {
 }
 
 
-export function useMedicalRecordInfoSelect() {
+export function useDiagnosisFinalInfoSelect() {
   const { fetch, options, ...rest } = useSelect({
     default: [],
     fetch: async (blurry) => {

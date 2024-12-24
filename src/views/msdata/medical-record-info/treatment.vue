@@ -18,11 +18,7 @@
     
             
         
-      <el-card header="我是卡片"><el-input :value="['刃恒99', 
-                            '我刃你恒久了',
-                            '支持应枫99喵,这杆枪可是锐利得足够刺透龙鳞啊', 
-                            '成双之物总会再度重逢', 
-                            '我会奉陪到底的'][Math.floor(Math.random() * 5)]" readonly /></el-card></KCell>
+      <el-card header="我是卡片"><el-input :value="采用中药调理身体机能，结合现代影像技术进行复查。" readonly /></el-card></KCell>
   <KCell> 
 
   

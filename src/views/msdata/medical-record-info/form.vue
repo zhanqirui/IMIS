@@ -61,7 +61,7 @@
     <KCell>
 <KRow>
   <KCell></KCell>
-  <KCell><ElButton   type="primary" @click="goToHome">跳转到首页</ElButton></KCell>
+  <KCell><ElButton   type="primary" @click="goToHome" style="position: fixed; bottom: 20px; right: 160px;">调用模型</ElButton></KCell>
   <KCell></KCell>
 </KRow>
     </KCell>
