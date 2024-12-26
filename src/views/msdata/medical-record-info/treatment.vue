@@ -9,18 +9,26 @@
         
        
       
-   <el-form-item  :rules="[{required:false,message:'必填',},]" >
+    
+      
+        
+            
 <KRow>
   <KCell>
-        <KText>病情描述</KText>
-            </KCell>
-  
-  <KCell> </KCell>
-</KRow>
-    <k-form-input    class="width：500"  :autosize="true"  type="textarea"   :rows="20" style="width: 100%; height: 300px;"/>
+    
+            
         
-       </el-form-item> 
-      </KCell><el-button     type="flex" justify="end" style="width: 120px; height: 40px;"><el-text>确认</el-text></el-button>
+      <el-card header="我是卡片"><el-input :value="采用中药调理身体机能，结合现代影像技术进行复查。" readonly /></el-card></KCell>
+  <KCell> 
+
+  
+   
+  
+        <KText>修改意见</KText>
+            <el-input  type="textarea" v-model="feedbackContent.text"/> </KCell>
+  
+</KRow>
+    </KCell>
       </KRow>
     </el-form>
   </KCell>
@@ -34,19 +42,16 @@
       <KRow>
         
   <KCol>
-    <KCell><el-form-item label="模型建议">
-        <el-input  />
-      </el-form-item></KCell>
-    <KCell><el-form-item label="采纳意见">
-        
-  <el-radio-group v-model="radio">
-    <el-radio label="1"><span>是</span></el-radio>
-    <el-radio label="2"><span>否</span></el-radio>
     
-  </el-radio-group>
+    <KCell><el-form-item           :prop="form.option" :rules="[{required:false,message:'必填',},]" label="采纳意见">
+        
+      <el-radio-group v-model="radioValue.selected">
+                    <el-radio label="1">是</el-radio>
+                    <el-radio label="2">否</el-radio>
+                  </el-radio-group>
   
       </el-form-item></KCell>
-    <KCell><el-button  size="samll">提交</el-button></KCell>
+    <KCell><el-button  size="samll" type="primary" @click="navigateTo">提交</el-button></KCell>
   </KCol>
        
       </KRow>
@@ -59,11 +64,43 @@
                 </KCell>
               </KPageHeader></KPage>
 </template>
+
+
+
+
 <script setup>
-import { reactive } from 'vue'
-const form = reactive({})
+import { reactive, onMounted, ref } from 'vue';
+import form_1 from './form.vue';
+const radioValue = reactive({
+  selected: null, // 存储采纳意见的选择结果
+  display: computed(() => {
+    return radioValue.selected === '1' ? '是' : '否';
+  })
+});
+const form = reactive({ option:true});
+const form_1_1 = reactive({});
+const displayRadioValue = computed(() => {
+  return radioValue.value === '1' ? '是' : '否';
+});
 
-const form_1 = reactive({})
+// function goToRecord() {
+//   const form_1_1 = reactive({});
 
-const form_1_1 = reactive({})
+//   this.$router.push('/msdata/hospital-info');
+//   console.log('提交按钮被点击，跳转到首页');
+
+// }
+import { useRoute } from "@@/core/coreExports";
+import { useRouter } from 'vue-router';
+const router = useRouter();
+function navigateTo() {
+  router.push({ path: "/msdata/medical-record-info"});
+}
+
+const form_1_1_1 = reactive({})
+
+const form_1_1_1_1 = reactive({})
+const feedbackContent = reactive({
+  text: '' // 初始为空字符串，用户可以在 textarea 中输入内容
+});
 </script>

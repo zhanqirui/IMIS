@@ -7,10 +7,15 @@
 </div></KCell></KCell>
     <KCell>
 
-              <KCol>
-                <KRow>
+              <KCol><KRow>
                   <KCell>
-                    <KCell><div style="height: 20px; width: 100%;text-align: center;display: flex; justify-content: center; align-items: center; color: white;">
+                    <KCell>
+  <KCol>
+    <KCell><el-image src="/pictures/yiiyuan.jpg" style="margin-left: 50px;"/></KCell>
+    <KCell></KCell>
+    <KCell></KCell>
+  </KCol>
+      <div style="height: 20px; width: 100%;text-align: center;display: flex; justify-content: center; align-items: center; color: white;">
 
 </div></KCell>
     <el-popover
@@ -40,7 +45,7 @@
       <el-card style="width:700px;">
         <h4>概念设计</h4>
         <p>通过共同商讨后，确定了大概的系统架构，并开始进行概念设计。完成了数据流图和功能描述。小组成员为了更好地做出系统，和在医院任职的家人沟通，以求做出效果更好的设计。</p>
-        <el-button type="primary">操作按钮</el-button>
+        
       </el-card>
     </el-timeline-item>
     <el-timeline-item timestamp="2024-11-28">
@@ -68,11 +73,11 @@
         <p>全力开发中……</p>
         <el-image style = "height: 300px" src="/pictures/work.jpg" alt="示例图片"></el-image>
       </el-card>
-    </el-timeline-item>\
+    </el-timeline-item>
     <el-timeline-item timestamp="2024-12">
       <el-card style="width:700px;">
-        <h4></h4>
-        <p>全力开发中……</p>
+        <h4>Done!</h4>
+        <p>呵，长大了！<br>经过将近两个月的设计开发工作, IMIS终于完成了!git的版本记录中,存放了我们124次提交记录,累计修改约20000行代码,实现了医院信息系统的基本功能。从11月中旬到12月下旬,我们终于完成了本项目的开发,并且对基本功能完成了测试。<br>完结撒花!</p>
       </el-card>
     </el-timeline-item>
     </el-timeline><div style="height: 100px; width: 100%;text-align: center;display: flex; justify-content: center; align-items: center; color: white;">
@@ -81,7 +86,14 @@
     </KCell>
   
 
-</KRow>
+
+  <KCol>
+    <KCell></KCell>
+    <KCell></KCell>
+    <KCell></KCell>
+  </KCol>
+      </KRow>
+                
                 
               </KCol>
     </KCell>
