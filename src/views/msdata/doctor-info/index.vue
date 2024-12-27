@@ -118,7 +118,8 @@
 
   const userInfo = useUserInfo();
   const userRealID= userInfo.value.username;
-  
+  // 检查用户是否有权限
+  const hasDetailPermission = access.hasAccess("msdata:doctorInfo:detail");
   // #region 列表数据
   const {
     queryForm,
@@ -141,8 +142,7 @@
                     },
       pageSize: 10,
       fetch: async _pager => {
-        // 检查用户是否有权限
-      const hasDetailPermission = access.hasAccess("msdata:doctorInfo:detail");
+
         //判断是否有权限
       if (hasDetailPermission) {
         // 有权限，调用 pageApi 正常显示

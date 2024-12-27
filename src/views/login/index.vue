@@ -20,7 +20,7 @@
     <KCell><div class="background_style1" style="height: 100px; width: 100%;text-align: center;display: flex; justify-content: center; align-items: center; color: white;">
   欢迎您来到IMIS系统
 </div></KCell>
-    <KCell><div class="background_style" style="height: 250px; width: 100%;"></div></KCell>
+    <KCell><div class="background_style" style="height: 110px; width: 100%;"></div></KCell>
     <KCell><KRow class="background_style">
   <KCell>
     <el-carousel style="width:100%;" :autoplay="true">

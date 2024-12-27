@@ -15,15 +15,9 @@
             
 <KRow>
   <KCell>
-    
-            
-        
-      <el-card header="我是卡片"><el-input :value="采用中药调理身体机能，结合现代影像技术进行复查。" readonly /></el-card></KCell>
+      <el-card header="我是卡片"><el-input :value="'采用中药调理身体机能,结合现代影像技术进行复查.'" readonly /></el-card></KCell>
   <KCell> 
 
-  
-   
-  
         <KText>修改意见</KText>
             <el-input  type="textarea" v-model="feedbackContent.text"/> </KCell>
   

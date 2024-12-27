@@ -1,103 +1,134 @@
 <template>
-    <KQueryList>
-      <!-- <KQueryNav></KQueryNav> -->
-      
-      <KQueryForm>
-        
-        <el-form-item label="医院名称">
-          <el-input v-model="queryForm.hospitalName" placeholder="请输入" clearable />
-        </el-form-item> 
-      </KQueryForm>
-      
-      <KQueryTable>
-        <KTableBar title="医院信息" :columns="columns" @refresh="fetchData">
-          <template #buttons>
-            <el-button
-              v-access="'msdata:hospitalInfo:add'"
-              type="primary"
-              :icon="useRenderIcon('Plus')"
-              @click="() => handleEdit({ title: '新增医院信息', effect: fetchData })"
-            >
-              新增
-            </el-button>
-          </template>
-          <template #default="{ size, dynamicColumns }">
-            <KTable
-              border
-              row-key="id"
-              align-whole="center"
-              show-overflow-tooltip
-              table-layout="auto"
-              :loading="loading"
-              :size="size"
-              height="100%"
-              :data="listData"
-              :columns="dynamicColumns"
-              :pagination="pagination"
-              :paginationSmall="size === 'small' ? true : false"
-              :header-cell-style="{
-                background: 'var(--el-table-row-hover-bg-color)',
-                color: 'var(--el-text-color-primary)'
-              }"
-              @sort-change="handelSortChange"
-              @selection-change="handleSelectionChange"
-              @page-size-change="handlePageSizeChange"
-              @page-current-change="handleCurrentPageChange"
-            >
-              <template #operation="{ row }">
-                <el-button
-                  v-access="'msdata:hospitalInfo:edit'"
-                  class="!m-0"
+  <div class="dashboard">
+    <el-row :gutter="20">
+      <!-- 柱状图1: 全院科室数量 -->
+      <el-col :span="8">
+        <el-card>
+          <div ref="barChart1" class="chart"></div>
+        </el-card>
+      </el-col>
+      <!-- 柱状图2: 全院医生数量 -->
+      <el-col :span="8">
+        <el-card>
+          <div ref="barChart2" class="chart"></div>
+        </el-card>
+      </el-col>
+      <!-- 柱状图3: 全院接待病人数量 -->
+      <el-col :span="8">
+        <el-card>
+          <div ref="barChart3" class="chart"></div>
+        </el-card>
+      </el-col>
+      <!-- 饼状图: 智能决策模型被采用率 -->
+      <el-col :span="24">
+        <el-card>
+          <div ref="pieChart" class="chart"></div>
+        </el-card>
+      </el-col>
+    </el-row>
+  </div>
+</template>
 
-               link
-                  type="primary"
-                  :size="size"
-                  :icon="useRenderIcon('EditPen')"
-                  @click="
-                    () =>
-                      handleEdit({
-                        id: row.id,
-                        title: '编辑医院信息',
-                        row,
-                        effect: fetchData
-                      })
-                  "
-                >
-                  编辑
-                </el-button>
-                <el-button
-                  v-access="'msdata:hospitalInfo:del'"
-                  class="!m-0"
-                  link
-                  type="danger"
-                  :size="size"
-                  :icon="useRenderIcon('Delete')"
-                  @click="() => handleDelete(row.id, fetchData)"
-                >
-                  删除
-                </el-button>
-              </template>
-            </KTable>
-          </template>
-        </KTableBar>
-      </KQueryTable>
-    </KQueryList>
-  </template>
+<script setup>
+import { ref, onMounted } from 'vue';
+import * as echarts from 'echarts';
+import { ElRow, ElCol, ElCard } from 'element-plus';
+import { useRenderIcon, defineRouteMeta, access } from "@kesplus/kesplus";
+import { handleEdit, handleView, handleDelete } from "./utils/hook";
+import { deleteApi, pageApi } from "./utils/api";
+import { usePageModel } from "@@/plugin-platform/utils/hooks";
+import { getSortChangeStr } from "@@/plugin-platform/utils/tools";
 
-  <script setup>
-  import { useRenderIcon, defineRouteMeta, access } from "@kesplus/kesplus";
-  import { handleEdit, handleView, handleDelete } from "./utils/hook";
-  import { deleteApi, pageApi } from "./utils/api";
-  import { usePageModel } from "@@/plugin-platform/utils/hooks";
-  import { getSortChangeStr } from "@@/plugin-platform/utils/tools";
+// 假设的单个医院统计数据
+const hospitalStat = ref({
+  name: "Test",
+  departmentCount: 7,
+  doctorCount: 208,
+  patientVisits: 1506,
+  modelAdoptionRate: 0.9,
+});
 
-  defineOptions({ handleEdit, handleView })
+// 柱状图1: 全院科室数量
+const barChart1 = ref(null);
+// 柱状图2: 全院医生数量
+const barChart2 = ref(null);
+// 柱状图3: 全院接待病人数量
+const barChart3 = ref(null);
+// 饼状图: 智能决策模型被采用率
+const pieChart = ref(null);
 
-  defineRouteMeta({
-    title: "医院信息"
-  })
-  // #region 列表数据
-  const {
+// 颜色数组
+const colors = ['#FFA41C', '#2F3037', '#9FE080', '#5C7BD9', '#7ED3F4', '#EE6666', '#c7c7c7', '#FFDC60'];
+
+onMounted(() => {
+  // 初始化柱状图1
+  const chart1 = echarts.init(barChart1.value);
+  chart1.setOption({
+    title: { text: '全院科室数量' },
+    xAxis: { type: 'category', data: [hospitalStat.value.name] },
+    yAxis: { type: 'value' },
+    series: [{
+      name: '科室数量',
+      type: 'bar',
+      data: [hospitalStat.value.departmentCount],
+      itemStyle: { color: colors[0] },
+      label: { show: true, position: 'top', formatter: '{c}' }
+    }]
+  });
+
+  // 初始化柱状图2
+  const chart2 = echarts.init(barChart2.value);
+  chart2.setOption({
+    title: { text: '全院医生数量' },
+    xAxis: { type: 'category', data: [hospitalStat.value.name] },
+    yAxis: { type: 'value' },
+    series: [{
+      name: '医生数量',
+      type: 'bar',
+      data: [hospitalStat.value.doctorCount],
+      itemStyle: { color: colors[1] },
+      label: { show: true, position: 'top', formatter: '{c}' }
+    }]
+  });
+
+  // 初始化柱状图3
+  const chart3 = echarts.init(barChart3.value);
+  chart3.setOption({
+    title: { text: '全院接待病人数量' },
+    xAxis: { type: 'category', data: [hospitalStat.value.name] },
+    yAxis: { type: 'value' },
+    series: [{
+      name: '接待病人数量',
+      type: 'bar',
+      data: [hospitalStat.value.patientVisits],
+      itemStyle: { color: colors[2] },
+      label: { show: true, position: 'top', formatter: '{c}' }
+    }]
+  });
+
+  // 初始化饼状图
+  const pieChartInstance = echarts.init(pieChart.value);
+  pieChartInstance.setOption({
+    title: { text: '智能决策模型被采用率' },
+    series: [{
+      name: '被采用率',
+      type: 'pie',
+      radius: '55%',
+      data: [
+        { value: hospitalStat.value.modelAdoptionRate * 100, name: '被采用', itemStyle: { color: colors[3] } },
+        { value: (1 - hospitalStat.value.modelAdoptionRate) * 100, name: '未被采用', itemStyle: { color: colors[4] } }
+      ],
+      label: {
+        show: true,
+        formatter: '{b}: {c}%',
+        position: 'outside'
+      }
+    }]
+  });
+});
+
+ // #region 列表数据
+ const {
     queryForm,
     resetForm,
     loading,
@@ -112,7 +143,7 @@
   } = usePageModel({
       queryForm: {
         orderColumns: "",
-                        hospitalName:"",
+        hospitalName:"",
                     },
       pageSize: 10,
       fetch: async _pager => {
@@ -129,72 +160,15 @@
 
   access.hasAccess("msdata:hospitalInfo:detail") && fetchData()
 
-  // #region 列表字段
-  /** @type {TableColumnList} */
-  const columns = [
-      {
-        label: "",
-        type: "selection",
-        showOverflowTooltip: false,
-        selectable: (row, index) => {
-          return true
-        }
-      },
-      {
-        label: "序号",
-        type: "index",
-        width: 60,
-        showOverflowTooltip: false
-      },
-                        {
-            label: "医院名称",
-            prop: "hospitalName",
-            align: "center",
-            formatter: void 0,
-            cellRenderer: void 0,
-            sortable: "custom"
-          },
-                  {
-            label: "全院科室数量",
-            prop: "departmentCount",
-            align: "center",
-            formatter: void 0,
-            cellRenderer: void 0,
-            sortable: "custom"
-          },
-                  {
-            label: "全院医生数量",
-            prop: "doctorCount",
-            align: "center",
-            formatter: void 0,
-            cellRenderer: void 0,
-            sortable: "custom"
-          },
-                  {
-            label: "全院接待病人数量（人次）",
-            prop: "patientVisits",
-            align: "center",
-            formatter: void 0,
-            cellRenderer: void 0,
-            sortable: "custom"
-          },
-                  {
-            label: "智能决策模型被采用率",
-            prop: "modelAdoptionRate",
-            align: "center",
-            formatter: void 0,
-            cellRenderer: void 0,
-            sortable: "custom"
-          },
-                    {
-        label: "操作",
-        width: 230,
-        align: "center",
-        fixed: "right",
-        slot: "operation",
-        showOverflowTooltip: false
-      }
-  ];
-  // #endregion
 
-  </script>
+
+</script>
+
+<style scoped>
+.dashboard {
+  padding: 20px;
+}
+.chart {
+  height: 400px;
+}
+</style>
